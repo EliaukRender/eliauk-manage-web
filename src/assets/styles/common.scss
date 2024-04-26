@@ -1,0 +1,7 @@
+
+.page-main {
+  height: calc(100% - $page-header-height);
+  background-color: #fff;
+  overflow-y: auto;
+  border-radius: 8px;
+}

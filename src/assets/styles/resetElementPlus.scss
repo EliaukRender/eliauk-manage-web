@@ -1,0 +1,40 @@
+/**
+ * @Description: 重置element-plus组件的样式
+*/
+
+
+/**
+ *  注释：重置el-dialog组件样式
+ * */
+.el-dialog {
+  .el-dialog__header {
+    border-bottom: 1px solid $border;
+    margin: 0;
+    padding: 15px;
+
+    .dialog-title {
+      font-weight: 600;
+      font-size: 18px;
+      color: #262626;
+    }
+
+    .el-dialog__headerbtn {
+      width: 50px;
+      height: 50px;
+
+      .el-dialog__close {
+        font-size: 20px;
+      }
+    }
+
+  }
+
+  .el-dialog__body {
+    padding: 20px;
+  }
+
+  .el-dialog__footer {
+    padding: 15px 20px;
+  }
+}
+

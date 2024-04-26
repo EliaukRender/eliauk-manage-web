@@ -5,60 +5,86 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended", "plugin:prettier/recommended"],
+  extends: [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended"
+  ],
   parser: "vue-eslint-parser",
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    ecmaFeatures: {
+    ecmaVersion: "latest", sourceType: "module", ecmaFeatures: {
       jsx: true
     }, parser: "@typescript-eslint/parser"
   },
   plugins: ["@typescript-eslint", "vue"],
   rules: {
-    complexity: ["warn", { max: 10 }], // 代码复杂度
-    quotes: [2, "single", { avoidEscape: true, allowTemplateLiterals: true }], // 引号类型 `` "" ''
-    eqeqeq: [2, "always", { null: "ignore" }], // 必须使用全等
-    "comma-dangle": ["error", "never"], // 对象字面量项尾不能有逗号
-    "arrow-spacing": ["error", { before: true, after: true }], // 箭头函数前加空格
-    "default-case": 2, // switch中一定使用default
-    "no-alert": process.env.NODE_ENV !== "production" ? 0 : 2,     // 禁止使用alert confirm prompt
-    "no-console": process.env.NODE_ENV !== "production" ? 0 : [1, { allow: ["warn", "error"] }], // 禁止使用console
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-with": 2, // error; 代码里面禁止使用 with 表达式
-    "no-eval": 2, // error; 代码中不允许使用eval
-    "no-trailing-spaces": 2, // 行末尾有空格
-    "no-redeclare": 2, // 禁止重复声明变量
-    "no-multi-spaces": "error", // 禁止在任何地方使用多个连续空格
-    "no-undef": 2, // 不能有未定义的变量
-    "no-use-before-define": 2, // 未定义前不能使用
-    "comma-style": [2, "last"], // 如果逗号可以放在行首或行尾时，那么请放在行尾
-    "no-label-var": 2, // 不允许标签与变量同名
-    "no-lone-blocks": 2, // 禁用不必要的嵌套块
-    "no-underscore-dangle": 2, // 标识符不能以_开头或结尾
-    "no-mixed-spaces-and-tabs": 2, // 不允许空格和 tab 混合缩进
-    "no-multiple-empty-lines": [2, { max: 1 }], // 不允许多个空行
-    "no-cond-assign": 2, // 禁止条件表达式中出现赋值操作符
-    "no-var": 2, // 不能用var
-    "no-empty": 2, // 禁止使用空语句模块   if，switch，for，try，catch的{内没有内容}
-    "no-await-in-loop": 2, // 禁止循环中出现await
-    "no-unreachable": 2, // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
-    "block-scoped-var": 2, // 强制把变量的使用限制在其定义的作用域范围内
-    "no-extra-label": 2, // 禁用不必要的标签
-    "spaced-comment": 2, // 注释风格要不要有空格什么的
-    "space-before-blocks": [2, "always"], // 块语句必须总是至少有一个前置空格
-    "space-before-function-paren": 0, // 函数定义时括号前面要有空格
-    "space-after-keywords": [0, "always"], // 关键字后面是否要空一格
-    "space-infix-ops": [2, { int32Hint: true }], // 操作符周围的空格
-    "comma-spacing": ["error", { before: false, after: true }], // 逗号前后的空格
-    "key-spacing": ["error", { afterColon: true }],
-    "space-unary-ops": [2, { words: true, nonwords: false }], // 一元运算符前后不要加空格
-    "object-curly-spacing": ["error", "always"], // 花括号加空格
-    "vue/require-default-prop": 2, // prop 需要默认的值
-    "vue/singleline-html-element-content-newline": 0, // 标签</>前后不换行
-    "vue/multi-word-component-names": 0,
-    "vue-multiple-template-root": 0,
-    "vue/eqeqeq": [2, "always", { null: "ignore" }],
-    "vue/max-attributes-per-line": [0, { singleline: 1, multiline: { max: 1, allowFirstLine: false } }]
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "@typescript-eslint/explicit-module-boundary-types": ["off"],
+    "@typescript-eslint/ban-ts-comment": ["off"],
+    "@typescript-eslint/ban-types": ["off"],
+    "no-with": 2,// 禁用with
+    "no-unreachable": 2,// 不能有无法执行的代码
+    "no-unused-expressions": 2,//禁止无用的表达式
+    "@typescript-eslint/no-unused-vars": [2, { "vars": "all", "args": "after-used" }],//不能有声明后未被使用的变量或参数
+    "no-use-before-define": 2,//未定义前不能使用
+    "no-spaced-func": 2,//函数调用时 函数名与()之间不能有空格
+    "no-param-reassign": 2,//禁止给参数重新赋值
+    "no-mixed-requires": [2, false],//声明时不能混用声明类型
+    "no-mixed-spaces-and-tabs": [2, false],//禁止混用tab和空格
+    "no-multi-spaces": 2,//不能用多余的空格
+    "no-multi-str": 2,//字符串不能用\换行
+    "no-multiple-empty-lines": [2, { "max": 2 }],//空行最多不能超过2行
+    "no-func-assign": 2,//禁止重复的函数声明
+    "no-empty": 2,//块语句中的内容不能为空
+    "no-dupe-keys": 2,//在创建对象字面量时不允许键重复 {a:1,a:1}
+    "no-dupe-args": 2,//函数参数不能重复
+    "no-duplicate-case": 2,//switch中的case标签不能重复
+    "no-constant-condition": 2,//禁止在条件中使用常量表达式 if(true) if(1)
+    "indent": [2, 2, { "SwitchCase": 1 }], // 强制使用一致的缩进
+    "eqeqeq": [2, "always"], // 要求使用 === 和 !==
+    "semi": [2, "always"], // 要求或禁止使用分号代替 ASI
+    "quotes": [2, "double"],  // 强制使用一致的反勾号、双引号或单引号
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],// if while function 后面的{必须与if在同一行。
+    "space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
+    "semi-spacing": [0, { "before": false, "after": true }],//分号前后空格
+    "prefer-const": 2,//首选const
+    "padded-blocks": 0,//块语句内行首行尾是否要空行
+    "max-params": [2, 5],//函数最多只能有5个参数
+    "key-spacing": [0, { "beforeColon": false, "afterColon": true }],//对象字面量中冒号的前后空格
+    "lines-around-comment": 0,//行前/行后备注
+    "max-depth": [2, 5],//嵌套块深度
+    "max-len": [2, 120],//字符串最大长度
+    "max-nested-callbacks": [2, 5],//回调嵌套深度
+    "dot-location": 0,//对象访问符的位置，换行的时候在行首还是行尾
+    "dot-notation": [0, { "allowKeywords": true }],//避免不必要的方括号
+    "eol-last": 0,//文件以单一的换行符结束
+    "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
+    "comma-spacing": 0,//逗号前后的空格
+    "comma-style": [2, "last"],//逗号风格，换行时在行首还是行尾
+    "complexity": [2, 11],//循环复杂度
+    "linebreak-style": [0, "windows"],//换行风格
+    // 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always 参数：[ 之前和 ] 之后必须带空格
+    // "array-bracket-spacing": [2, "always"],
+    // 以方括号取对象属性时，[ 后面和 ] 前面是否需要空格, 可选参数 never, always
+    "computed-property-spacing": [2, "never"], // if else while for do后面的代码块是否需要{ }包围，参数：
+    //    multi  只有块中有多行语句时才需要{ }包围
+    //    multi-line  只有块中有多行语句时才需要{ }包围, 但是块中的执行语句只有一行时，
+    //                   块中的语句只能跟和if语句在同一行。if (foo) foo++; else doSomething();
+    //    multi-or-nest 只有块中有多行语句时才需要{ }包围, 如果块中的执行语句只有一行，执行语句可以零另起一行也可以跟在if语句后面
+    //    [2, "multi", "consistent"] 保持前后语句的{ }一致
+    //    default: [2, "all"] 全都需要{ }包围
+    "curly": [2, "all"],
+    "max-lines": [2, 1500], // 限制一个文件最多的行数
+    "max-lines-per-function": [2, 100], // 限制函数块中的代码行数
+    "vue/component-definition-name-casing": [2, "PascalCase"], // 组件的 name 属性必须符合 PascalCase
+    "vue/component-name-in-template-casing": [2, "kebab-case"], // 限制组件名的风格
+    "vue/match-component-file-name": 2, // 组件名称必须和文件名一致
+    "no-dupe-class-members": 2,//禁止重复定义类的成员
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "vue/multi-word-component-names": ["error", {
+      "ignores": ["index"]//添加组件命名忽略规则, 需要忽略的组件名
+    }]
+    
   }
 };
