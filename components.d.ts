@@ -7,6 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    403: typeof import('./src/components/ErrorMsgPage/403.vue')['default']
+    404: typeof import('./src/components/ErrorMsgPage/404.vue')['default']
+    500: typeof import('./src/components/ErrorMsgPage/500.vue')['default']
     CommonDialog: typeof import('./src/components/CommonDialog/index.vue')['default']
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
     Drawer: typeof import('./src/components/Drawer/index.vue')['default']
@@ -19,6 +22,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ErrorMsgPage: typeof import('./src/components/ErrorMsgPage/index.vue')['default']
     Layout: typeof import('./src/components/Layout/index.vue')['default']
     LeftAsideMenu: typeof import('./src/components/Layout/components/LeftAsideMenu.vue')['default']
     Loading: typeof import('./src/components/Loading/index.vue')['default']

@@ -1,6 +1,4 @@
-<template>
-  <div>404</div>
-</template>
+<template>table</template>
 
 <script setup lang="ts"></script>
 

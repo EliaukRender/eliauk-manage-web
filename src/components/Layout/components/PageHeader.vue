@@ -13,9 +13,7 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .header {
@@ -28,7 +26,7 @@
     @include flexRow();
 
     > img {
-      width: 35px
+      width: 35px;
     }
 
     .title {

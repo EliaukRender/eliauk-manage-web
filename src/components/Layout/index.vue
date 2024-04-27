@@ -13,13 +13,12 @@
 <script lang="ts" setup>
 import PageHeader from "@/components/Layout/components/PageHeader.vue";
 import LeftAsideMenu from "@/components/Layout/components/LeftAsideMenu.vue";
-
 </script>
 
 <style lang="scss" scoped>
 .layout {
   height: 100vh;
-  background-color: #F2F3F5;
+  background-color: #f2f3f5;
 
   .body {
     height: calc(100% - $page-header-height - 40px); // 40px是padding值

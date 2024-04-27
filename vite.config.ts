@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
     // 插件
     plugins: [
       vue(),
-      vueJsx(), // vue 可以使用 jsx/tsx 语法
+      vueJsx(), // vue可以使用jsx/tsx语法
       AutoImport({
         resolvers: [ElementPlusResolver()]
       }),
@@ -50,7 +50,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         // 导入scss预编译程序
         scss: {
-          additionalData: "@use \"@/assets/styles/mixin.scss\" as *;"
+          additionalData: '@use "@/assets/styles/mixin.scss" as *;'
         }
       }
     }

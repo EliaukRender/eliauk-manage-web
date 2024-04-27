@@ -37,33 +37,33 @@
             :disabled="disabledConfirmBtn"
             :loading="confirmBtnLoading"
             @click="confirm"
-          >{{ confirmBtnText }}</el-button>
+          >{{
+            confirmBtnText
+          }}</el-button>
         </span>
       </template>
     </el-dialog>
   </div>
 </template>
-/**
-*  注释：封装的对话框Dialog组件
-* */
+/** * 注释：封装的对话框Dialog组件 * */
 <script lang="ts" setup>
 import { computed } from "vue";
 
 interface PropsType {
-  visible: boolean,
-  title: string,
-  customWidth: number, // 自定义对话框的宽度
-  showModal: boolean, // 是否需要遮罩层
-  showClose: boolean, // 是否显示右上角关闭按钮
-  showDefaultFooter: boolean, // 是否显示对话框底部默认的按钮
-  showDefaultHeader: boolean, // 是否显示对话框头部的标题
-  closeOnPressEscape: boolean,
-  closeOnClickModal: boolean,
-  isBeforeClose: boolean, // 弹窗关闭前是否处理自定义事件
-  cancelBtnText: string, // 自定义取消按钮的文本
-  confirmBtnText: string, // 自定义确定按钮的文本
-  disabledConfirmBtn: boolean, // 是否禁用'确定'按钮
-  confirmBtnLoading: boolean, // 确认按钮的loading效果
+  visible: boolean;
+  title: string;
+  customWidth: number; // 自定义对话框的宽度
+  showModal: boolean; // 是否需要遮罩层
+  showClose: boolean; // 是否显示右上角关闭按钮
+  showDefaultFooter: boolean; // 是否显示对话框底部默认的按钮
+  showDefaultHeader: boolean; // 是否显示对话框头部的标题
+  closeOnPressEscape: boolean;
+  closeOnClickModal: boolean;
+  isBeforeClose: boolean; // 弹窗关闭前是否处理自定义事件
+  cancelBtnText: string; // 自定义取消按钮的文本
+  confirmBtnText: string; // 自定义确定按钮的文本
+  disabledConfirmBtn: boolean; // 是否禁用'确定'按钮
+  confirmBtnLoading: boolean; // 确认按钮的loading效果
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
@@ -107,8 +107,6 @@ const cancel = () => {
 const confirm = () => {
   emits("confirm");
 };
-
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

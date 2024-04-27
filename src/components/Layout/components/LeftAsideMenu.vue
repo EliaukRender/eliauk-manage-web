@@ -11,23 +11,18 @@
         @open="handleOpen"
         @close="handleClose"
       >
-        <el-sub-menu
-          v-for="(item, index) in menuList"
-          :key="index"
-          :index="item.routePath"
-        >
+        <el-sub-menu v-for="(menuItem, index) in menuList" :key="index" :index="menuItem.path">
           <template #title>
             <el-icon>
-              <i-ep-menu />
+              <Component :is="menuItem.meta.menuIcon" />
             </el-icon>
-            <span>{{ item.meta.menuName }}</span>
+            <span>{{ menuItem.meta.menuName }}</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item
-              v-for="(item, index) in item.children"
-              :key="index"
-              :index="item.routePath"
-            >
+            <el-menu-item v-for="(item, itemIndex) in menuItem.children" :key="itemIndex" :index="item.path">
+              <el-icon>
+                <Component :is="item.meta.menuIcon" />
+              </el-icon>
               {{ item.meta.menuName }}
             </el-menu-item>
           </el-menu-item-group>
@@ -38,7 +33,7 @@
 </template>
 
 <script setup>
-import menuList from "@/components/Layout/config/menuList.js";
+import menuList from "@/config/menuList.ts";
 import { ref, computed } from "vue";
 
 const isCollapse = ref(false);
@@ -58,13 +53,9 @@ const defaultOpends = computed(() => {
 //   isCollapse.value = !isCollapse.value;
 // };
 
-const handleOpen = () => {
-};
+const handleOpen = () => {};
 
-const handleClose = () => {
-};
-
-
+const handleClose = () => {};
 </script>
 
 <style lang="scss" scoped>
@@ -83,7 +74,6 @@ const handleClose = () => {
       border-radius: 6px;
       border: none;
 
-
       .el-menu-item-group__title {
         padding: 0;
       }
@@ -95,7 +85,6 @@ const handleClose = () => {
 
         &:hover {
           background-color: $theme-light-color !important;
-
         }
       }
 
@@ -123,5 +112,4 @@ const handleClose = () => {
     }
   }
 }
-
 </style>
