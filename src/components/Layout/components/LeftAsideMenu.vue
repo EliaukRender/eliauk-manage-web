@@ -45,7 +45,7 @@ const isCollapse = ref(false);
 
 // 默认激活的菜单项
 const defaultActive = computed(() => {
-  return "/useDialog";
+  return "/useDialog/index";
 });
 
 // 默认展开的sub-menu

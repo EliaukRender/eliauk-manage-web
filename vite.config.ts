@@ -1,9 +1,11 @@
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-import path from "path";
+import { resolve } from "path";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), ""); // 根据mode值加载对应的.env.**文件，来加载所有环境变量
@@ -14,17 +16,23 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./src") // __dirname : 当前文件所在的目录的绝对路径
+        "@": resolve(__dirname, "./src") // __dirname : 当前文件所在的目录的绝对路径
       }
     },
     // 插件
     plugins: [
       vue(),
+      vueJsx(), // vue 可以使用 jsx/tsx 语法
       AutoImport({
         resolvers: [ElementPlusResolver()]
       }),
       Components({
         resolvers: [ElementPlusResolver()]
+      }),
+      // 使用 svg 图标
+      createSvgIconsPlugin({
+        iconDirs: [resolve(process.cwd(), "src/assets/svg-icons")], // src/assets/svg-icons文件夹下统一存放svg图片
+        symbolId: "icon-[dir]-[name]"
       })
     ],
     server: {

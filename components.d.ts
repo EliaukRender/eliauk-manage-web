@@ -7,8 +7,13 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CommonDialog: typeof import('./src/components/CommonDialog/index.vue')['default']
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
+    Drawer: typeof import('./src/components/Drawer/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
@@ -20,5 +25,6 @@ declare module 'vue' {
     PageHeader: typeof import('./src/components/Layout/components/PageHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }

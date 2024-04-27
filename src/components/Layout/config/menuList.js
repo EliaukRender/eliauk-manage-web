@@ -8,7 +8,7 @@ export default [
     },
     children: [
       {
-        routePath: "/useDialog",
+        routePath: "/useDialog/index",
         name: "useDialog",
         meta: {
           menuName: "组件展示",
@@ -18,7 +18,7 @@ export default [
     ]
   },
   {
-    routePath: "/useTable",
+    routePath: "/useTable/index",
     name: "useTable",
     meta: {
       menuName: "表格组件",

@@ -7,6 +7,8 @@
  *  注释：重置el-dialog组件样式
  * */
 .el-dialog {
+  padding: 0 !important;
+
   .el-dialog__header {
     border-bottom: 1px solid $border;
     margin: 0;
@@ -36,5 +38,14 @@
   .el-dialog__footer {
     padding: 15px 20px;
   }
+}
+
+/**
+ *  note: 重置el-drawer组件
+ * */
+.el-drawer__header {
+  border-bottom: 1px solid $border;
+  margin: 0 !important;
+  padding: 15px !important;
 }
 

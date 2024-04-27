@@ -13,6 +13,7 @@
       append-to-body
       @close="cancel"
     >
+      <slot />
       <template #header>
         <!-- 自定义弹窗头部 -->
         <slot name="header" />
@@ -23,7 +24,6 @@
           {{ title }}
         </div>
       </template>
-      <slot />
       <template #footer>
         <!-- 自定义弹窗底部 -->
         <slot name="footer" />

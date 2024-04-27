@@ -7,7 +7,7 @@ export const useDialogRoute: RouteRecordRaw[] = [
     component: () => import("@/components/Layout/index.vue"),
     children: [
       {
-        path: "/useDialog",
+        path: "/useDialog/index",
         name: "useDialog",
         component: () => import("@/views/useDialog/index.vue")
       }
