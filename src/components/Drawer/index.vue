@@ -14,36 +14,18 @@
   >
     <template #header>
       <slot name="header" />
-      <div
-        v-if="showDefaultHeader && !$slots.header"
-        class="drawer-title"
-      >
+      <div v-if="showDefaultHeader && !$slots.header" class="drawer-title">
         {{ title }}
       </div>
     </template>
     <slot />
-    <template
-      v-if="showDefaultFooter && !$slots.footer"
-      #footer
-    >
+    <template v-if="showDefaultFooter && !$slots.footer" #footer>
       <slot name="footer" />
-      <div
-        v-if="!$slots.footer"
-        style="flex: auto"
-      >
-        <el-button
-          v-if="showCancelBtn"
-          @click="close"
-        >
+      <div v-if="!$slots.footer" style="flex: auto">
+        <el-button v-if="showCancelBtn" @click="close">
           {{ cancelBtnText }}
         </el-button>
-        <el-button
-          v-if="showConfirmBtn"
-          type="primary"
-          :loading="confirmBtnLoading"
-          :disabled="disabledConfirmBtn"
-          @click="confirm"
-        >
+        <el-button v-if="showConfirmBtn" type="primary" :loading="confirmBtnLoading" :disabled="disabledConfirmBtn" @click="confirm">
           {{ confirmBtnText }}
         </el-button>
       </div>

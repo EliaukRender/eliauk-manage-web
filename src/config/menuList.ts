@@ -1,7 +1,9 @@
+import { MenuItem } from "@/types/menuType.ts";
+
 /**
- *  note: 菜单列表
+ *  note: 菜单列表;  目前是前端自己写死
  * */
-export default [
+export const menuList: MenuItem[] = [
   {
     path: "/useDialog",
     name: "useDialog",

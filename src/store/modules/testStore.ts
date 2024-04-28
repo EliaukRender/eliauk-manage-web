@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
+import piniaPersistConfig from "@/store/persist.ts";
 
-export const useTestStore = defineStore("test", {
+export const useTestStore = defineStore({
+  id: "test-store",
   state: () => ({
     counter: 0
   }),
@@ -13,5 +15,6 @@ export const useTestStore = defineStore("test", {
     changeCounter(newValue: number) {
       this.counter = newValue;
     }
-  }
+  },
+  persist: piniaPersistConfig("test-store") // 持久化存储
 });

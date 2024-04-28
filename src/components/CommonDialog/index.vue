@@ -17,29 +17,16 @@
       <template #header>
         <!-- 自定义弹窗头部 -->
         <slot name="header" />
-        <div
-          v-if="showDefaultHeader && !$slots.header"
-          class="dialog-title"
-        >
+        <div v-if="showDefaultHeader && !$slots.header" class="dialog-title">
           {{ title }}
         </div>
       </template>
       <template #footer>
         <!-- 自定义弹窗底部 -->
         <slot name="footer" />
-        <span
-          v-if="showDefaultFooter && !$slots.footer"
-          class="dialog-footer"
-        >
+        <span v-if="showDefaultFooter && !$slots.footer" class="dialog-footer">
           <el-button @click="cancel">{{ cancelBtnText }}</el-button>
-          <el-button
-            type="primary"
-            :disabled="disabledConfirmBtn"
-            :loading="confirmBtnLoading"
-            @click="confirm"
-          >{{
-            confirmBtnText
-          }}</el-button>
+          <el-button type="primary" :disabled="disabledConfirmBtn" :loading="confirmBtnLoading" @click="confirm">{{ confirmBtnText }}</el-button>
         </span>
       </template>
     </el-dialog>

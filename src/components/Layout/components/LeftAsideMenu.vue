@@ -33,10 +33,16 @@
 </template>
 
 <script setup>
-import menuList from "@/config/menuList.ts";
 import { ref, computed } from "vue";
+import { useAuthStore } from "@/store/modules/authorityStore.ts";
 
+const authStore = useAuthStore();
 const isCollapse = ref(false);
+
+// 菜单列表
+const menuList = computed(() => {
+  return authStore.authMenuListGetter;
+});
 
 // 默认激活的菜单项
 const defaultActive = computed(() => {
@@ -45,7 +51,7 @@ const defaultActive = computed(() => {
 
 // 默认展开的sub-menu
 const defaultOpends = computed(() => {
-  return menuList.map(item => item.routePath);
+  return menuList.value.map(item => item.path);
 });
 
 // 处理菜单折叠

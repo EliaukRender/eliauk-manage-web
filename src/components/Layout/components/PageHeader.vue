@@ -1,10 +1,7 @@
 <template>
   <div class="header">
     <div class="left">
-      <img
-        src="@/assets/images/common/logo.png"
-        alt=""
-      >
+      <img src="@/assets/images/common/logo.png" alt="" />
       <span class="title">Vue3-Ts-Vite-Pina</span>
     </div>
     <div class="right">

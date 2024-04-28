@@ -54,7 +54,7 @@ module.exports = {
     "key-spacing": [0, { beforeColon: false, afterColon: true }], //对象字面量中冒号的前后空格
     "lines-around-comment": 0, //行前/行后备注
     "max-depth": [2, 5], //嵌套块深度
-    "max-len": [2, 120], //字符串最大长度
+    "max-len": [2, 150], // 每行代码最大长度
     "max-nested-callbacks": [2, 5], //回调嵌套深度
     "dot-location": 0, //对象访问符的位置，换行的时候在行首还是行尾
     "dot-notation": [0, { allowKeywords: true }], //避免不必要的方括号
@@ -85,7 +85,7 @@ module.exports = {
     "vue/multi-word-component-names": [
       "error",
       {
-        ignores: ["index"] //添加组件命名忽略规则, 需要忽略的组件名
+        ignores: ["index", "403", "404", "500"] // 添加组件命名忽略规则, 需要忽略的组件名
       }
     ]
   }
