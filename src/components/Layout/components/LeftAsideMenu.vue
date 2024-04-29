@@ -35,9 +35,11 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useAuthStore } from "@/store/modules/authorityStore.ts";
+import { useRoute } from "vue-router";
 
 const authStore = useAuthStore();
 const isCollapse = ref(false);
+const route = useRoute();
 
 // 菜单列表
 const menuList = computed(() => {
@@ -46,7 +48,7 @@ const menuList = computed(() => {
 
 // 默认激活的菜单项
 const defaultActive = computed(() => {
-  return "/useDialog/index";
+  return route.path ? route.path : "/useDialog/index";
 });
 
 // 默认展开的sub-menu

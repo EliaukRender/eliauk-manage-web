@@ -25,7 +25,13 @@
         <el-button v-if="showCancelBtn" @click="close">
           {{ cancelBtnText }}
         </el-button>
-        <el-button v-if="showConfirmBtn" type="primary" :loading="confirmBtnLoading" :disabled="disabledConfirmBtn" @click="confirm">
+        <el-button
+          v-if="showConfirmBtn"
+          type="primary"
+          :loading="confirmBtnLoading"
+          :disabled="disabledConfirmBtn"
+          @click="confirm"
+        >
           {{ confirmBtnText }}
         </el-button>
       </div>

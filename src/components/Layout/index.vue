@@ -21,17 +21,15 @@ import LeftAsideMenu from "@/components/Layout/components/LeftAsideMenu.vue";
   background-color: #f2f3f5;
 
   .body {
-    height: calc(100% - $page-header-height - 40px); // 40px是padding值
+    height: calc(100vh - $page-header-height - 40px); // 40px是纵轴方向的padding值
     display: flex;
     justify-content: space-between;
     padding: 20px;
 
     .main {
-      width: 100%;
+      width: calc(100% - $aside-menu-width); // 40px是横轴方向的padding值
       height: 100%;
       margin-left: 20px;
-      background-color: #fff;
-      border-radius: 6px;
     }
   }
 }

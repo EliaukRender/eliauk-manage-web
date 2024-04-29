@@ -6,6 +6,7 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import vueSetupExtend from "unplugin-vue-setup-extend-plus/vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), ""); // 根据mode值加载对应的.env.**文件，来加载所有环境变量
@@ -23,6 +24,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       vueJsx(), // vue可以使用jsx/tsx语法
+      vueSetupExtend({}), //  name可以写在script标签上
       AutoImport({
         resolvers: [ElementPlusResolver()]
       }),

@@ -3,10 +3,14 @@
   <common-dialog :visible="dialogCfg.visible" @cancel="cancelDialog">
     <div>dialog的内容</div>
   </common-dialog>
-  <el-button type="primary" @click="openDialog"> useDialog </el-button>
+  <el-button type="primary" @click="openDialog">
+    useDialog
+  </el-button>
   <!--drawer-->
   <drawer :visible="drawerCfg.visible" @cancel="cancelDrawer" />
-  <el-button type="primary" @click="openDrawer"> useDrawer </el-button>
+  <el-button type="primary" @click="openDrawer">
+    useDrawer
+  </el-button>
 </template>
 
 <script setup lang="ts">

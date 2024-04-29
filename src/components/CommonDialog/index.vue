@@ -26,7 +26,9 @@
         <slot name="footer" />
         <span v-if="showDefaultFooter && !$slots.footer" class="dialog-footer">
           <el-button @click="cancel">{{ cancelBtnText }}</el-button>
-          <el-button type="primary" :disabled="disabledConfirmBtn" :loading="confirmBtnLoading" @click="confirm">{{ confirmBtnText }}</el-button>
+          <el-button type="primary" :disabled="disabledConfirmBtn" :loading="confirmBtnLoading" @click="confirm">{{
+            confirmBtnText
+          }}</el-button>
         </span>
       </template>
     </el-dialog>

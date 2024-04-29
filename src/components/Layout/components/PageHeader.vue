@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <div class="left">
-      <img src="@/assets/images/common/logo.png" alt="" />
+    <div class="left" @click="goToHome">
+      <img src="@/assets/images/common/logo.png" alt="">
       <span class="title">Vue3-Ts-Vite-Pina</span>
     </div>
     <div class="right">
@@ -10,7 +10,16 @@
   </div>
 </template>
 
-<script setup></script>
+<script lang="ts" setup>
+import { useRouter } from "vue-router";
+import { HOME_URL } from "@/config/globalConfig.ts";
+
+const router = useRouter();
+
+const goToHome = () => {
+  router.push(HOME_URL);
+};
+</script>
 
 <style lang="scss" scoped>
 .header {
@@ -21,6 +30,7 @@
 
   .left {
     @include flexRow();
+    cursor: pointer;
 
     > img {
       width: 35px;
