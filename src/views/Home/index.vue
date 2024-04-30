@@ -1,6 +1,6 @@
 <template>
-  <div class="home card">
-    <img class="home-bg" src="@/assets/images/common/welcome.png" alt="welcome">
+  <div class="home">
+    <img class="home-bg" src="@/assets/images/common/welcome.png" alt="welcome" />
   </div>
 </template>
 
@@ -13,6 +13,8 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  background-color: #fff;
+  border-radius: $border-radius;
 
   .home-bg {
     width: 70%;

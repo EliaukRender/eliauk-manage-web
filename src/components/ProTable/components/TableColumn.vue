@@ -11,9 +11,9 @@ const emits = defineEmits(["handleOperation"]);
 
 // 渲染单元格的文本数据
 const renderCellData = (item: ColumnProp, scope: RenderScope<any>) => {
-  // 执行自定义的格式化方法
-  if (!!item?.format) {
-    return item.format(item.prop, scope.row);
+  if (!item?.prop) {
+    console.error("请配置表格列的prop属性");
+    return;
   }
   return scope.row[item.prop] || "--";
 };
@@ -61,12 +61,17 @@ const RenderTableColumn = (item: ColumnProp) => {
           if (item.render) {
             return item.render(scope);
           }
+          // 渲染格式化后的单元格数据
+          if (!!item?.formatData && !!item.prop) {
+            return item.formatData(item.prop, scope.row);
+          }
           // 渲染单元格数据
           return renderCellData(item, scope);
         },
         // 自定义列头
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         header: (scope: HeaderRenderScope<any>) => {
-          console.log("header：", scope);
+          // console.log("header:", scope);
           return item.label;
         }
       }}

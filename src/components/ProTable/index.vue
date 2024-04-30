@@ -1,5 +1,5 @@
 <template>
-  <el-table ref="tableRef" :data="tableData" :border="border" height="100%">
+  <el-table ref="tableRef" :data="tableData" :border="border" height="100%" @selection-change="selectionChange">
     <template v-for="item in columnPropList" :key="item">
       <!-- 默认插槽 -->
       <slot />
@@ -36,7 +36,7 @@
       </table-column>
     </template>
   </el-table>
-  <paginationCmp
+  <pagination-cmp
     v-if="showPagination"
     :pageable="pageable"
     @handle-size-change="handleSizeChange"
@@ -48,23 +48,24 @@
 import TableColumn from "@/components/ProTable/components/TableColumn.vue";
 import { ColumnProp, operationType, Pageable, TypeProps } from "@/components/ProTable/interface/index.ts";
 import { nextTick, ref } from "vue";
-import paginationCmp from "@/components/ProTable/components/paginationCmp.vue";
+import PaginationCmp from "@/components/ProTable/components/PaginationCmp.vue";
 import { ElTable } from "element-plus";
+import { useSelection } from "@/components/ProTable/hooks/selection.ts";
 
 type PropsType = {
   tableData: any[]; // 表格数据
   columnPropList: ColumnProp[]; // 表格列配置
   border?: boolean; // 是否带有纵向边框
   showPagination?: boolean; // 默认显示分页组件
-  rowKey?: string; // // 行数据的Key，用来优化Table的渲染，当表格数据多选时，所指定的id
+  rowKey?: string; // // 行数据的Key，用于区分该行数据的唯一性
 };
 
-withDefaults(defineProps<PropsType>(), {
+const props = withDefaults(defineProps<PropsType>(), {
   tableData: () => [],
   columnPropList: () => [],
   border: true,
   showPagination: true,
-  rowKey: "id"
+  rowKey: "rowId"
 });
 
 const tableRef = ref<InstanceType<typeof ElTable>>(); // table 实例
@@ -107,9 +108,15 @@ const doLayout = () => {
   });
 };
 
+// 表格多选
+const { isSelected, selectedIdsList, selectedList, selectionChange } = useSelection(props.rowKey);
+
 // 向父组件暴露参数与方法
 defineExpose({
-  pageable,
+  pageable, // 分页参数
+  isSelected, // 多选是否勾选
+  selectedIdsList, // 被勾选的数据的rowKey对应的值
+  selectedList,
   doLayout
 });
 </script>

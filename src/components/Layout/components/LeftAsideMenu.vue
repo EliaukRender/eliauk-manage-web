@@ -79,7 +79,7 @@ const handleClose = () => {};
       width: 100%;
       height: 100%;
       background-color: #fff;
-      border-radius: 6px;
+      border-radius: $border-radius;
       border: none;
 
       .el-menu-item-group__title {

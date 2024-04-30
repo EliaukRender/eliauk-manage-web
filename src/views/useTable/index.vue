@@ -1,6 +1,6 @@
 <template>
   <div class="page-main">
-    <pro-table :column-prop-list="columnsList" :table-data="tableData" />
+    <pro-table :column-prop-list="columnsList" :table-data="tableData" row-key="userId" />
   </div>
 </template>
 
@@ -8,7 +8,10 @@
 import ProTable from "@/components/ProTable/index.vue";
 import { ColumnProp, RenderScope } from "@/components/ProTable/interface";
 
-const tableData = [{ userName: "liuchang" }];
+const tableData = [
+  { userId: 1, userName: "liuchang111", age: 18 },
+  { userId: 2, userName: "liuchang222", age: 20 }
+];
 
 const columnsList: ColumnProp[] = [
   {
@@ -16,6 +19,10 @@ const columnsList: ColumnProp[] = [
   },
   {
     type: "radio",
+    width: 50
+  },
+  {
+    type: "selection",
     width: 50
   },
   {
@@ -32,6 +39,11 @@ const columnsList: ColumnProp[] = [
     render: (scope: RenderScope<any>) => {
       return <div>{scope.row["userName"]}</div>;
     }
+  },
+  {
+    label: "年龄",
+    prop: "age",
+    sortable: true
   },
   {
     label: "学校",
