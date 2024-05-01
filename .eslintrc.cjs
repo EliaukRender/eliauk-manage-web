@@ -25,9 +25,9 @@ module.exports = {
     "@typescript-eslint/ban-types": ["off"],
     "no-with": 2, // 禁用with
     "no-unreachable": 2, // 不能有无法执行的代码
-    "no-unused-expressions": 2, //禁止无用的表达式
+    "no-unused-expressions": 2, // 禁止无用的表达式
     "@typescript-eslint/no-unused-vars": [2, { vars: "all", args: "after-used" }], //不能有声明后未被使用的变量或参数
-    "no-use-before-define": 2, //未定义前不能使用
+    "no-use-before-define": "off", // 未定义前不能使用
     "no-spaced-func": "off", // 函数名与括号之间允许有空格
     "no-param-reassign": 2, // 禁止给参数重新赋值
     "no-mixed-requires": [2, false], // 声明时不能混用声明类型

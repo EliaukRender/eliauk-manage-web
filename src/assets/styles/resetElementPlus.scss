@@ -46,3 +46,25 @@
   margin: 0 !important;
   padding: 15px !important;
 }
+
+/**
+ * @description: el-message
+*/
+.el-message {
+  min-width: 300px !important;
+  height: 40px !important;
+}
+
+.el-message--warning {
+  border: 1px solid #FFAE00 !important;
+}
+
+.el-message--error {
+  background: #FFEEEF !important;
+  border: 1px solid #FF543A !important;
+}
+
+.el-message--success {
+  background: #ECF8F0 !important;
+  border: 1px solid #24C366 !important;
+}

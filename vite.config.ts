@@ -37,6 +37,12 @@ export default defineConfig(({ mode }) => {
         symbolId: "icon-[dir]-[name]"
       })
     ],
+    esbuild: {
+      pure: mode === "production" ? ["console.log", "debugger"] : []
+    },
+    build: {
+      sourcemap: mode !== "production" // 是否显示源代码
+    },
     server: {
       host: true,
       hmr: true,

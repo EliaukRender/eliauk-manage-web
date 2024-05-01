@@ -1,5 +1,12 @@
 <template>
-  <el-table ref="tableRef" :data="tableData" :border="border" height="100%" @selection-change="selectionChange">
+  <el-table
+    ref="tableRef"
+    :data="processTableData"
+    :border="border"
+    height="100%"
+    :row-key="rowKey"
+    @selection-change="selectionChange"
+  >
     <template v-for="item in columnPropList" :key="item">
       <!-- 默认插槽 -->
       <slot />
@@ -9,18 +16,19 @@
         v-bind="item"
         :align="item.align ?? 'center'"
         :reserve-selection="item.type == 'selection'"
+        :row-key="rowKey"
       >
         <template #default="scope">
-          <!-- expand列 -->
+          <!-- expand列(展开列) -->
           <template v-if="item.type == 'expand'">
             <component :is="item.render" v-if="item.render" v-bind="scope" />
             <slot v-else :name="item.type" v-bind="scope" />
           </template>
-          <!-- radio列 -->
+          <!-- radio列(单选列) -->
           <el-radio v-if="item.type == 'radio'" v-model="radio" :label="scope.row[rowKey]">
             <i />
           </el-radio>
-          <!-- sort列 -->
+          <!-- sort列(拖拽排序列) -->
           <el-tag v-if="item.type == 'sort'" class="move">
             <el-icon>
               <DCaret />
@@ -46,59 +54,88 @@
 
 <script setup lang="ts">
 import TableColumn from "@/components/ProTable/components/TableColumn.vue";
-import { ColumnProp, operationType, Pageable, TypeProps } from "@/components/ProTable/interface/index.ts";
-import { nextTick, ref } from "vue";
+import { ColumnProp, operationType, TypeProps } from "@/components/ProTable/interface/index.ts";
+import { computed, nextTick, onMounted, ref } from "vue";
 import PaginationCmp from "@/components/ProTable/components/PaginationCmp.vue";
 import { ElTable } from "element-plus";
-import { useSelection } from "@/components/ProTable/hooks/selection.ts";
+import { useSelection } from "@/components/ProTable/hooks/selectionHook.ts";
+import Sortable from "sortablejs";
+import { useTableHook } from "@/components/ProTable/hooks/tableHook.ts";
 
 type PropsType = {
-  tableData: any[]; // 表格数据
+  staticTableData: any[]; // 表格静态数据（不需要使用接口获取表格数据）
   columnPropList: ColumnProp[]; // 表格列配置
-  border?: boolean; // 是否带有纵向边框
+  requestApi?: (params: any) => Promise<any>; // 请求表格数据的api函数
+  requestAuto?: boolean; // 是否自动发起接口请求
+  initParams?: Object; // 请求表格数据的参数 (一般是表单形成的参数)
+  handleResponseData?: (data: any) => any; // 对接口返回的数据作处理(比如接口返回字段参差不齐，此时就需要额外处理后再赋值给表格组件中的变量)
   showPagination?: boolean; // 默认显示分页组件
   rowKey?: string; // // 行数据的Key，用于区分该行数据的唯一性
+  border?: boolean; // 是否带有纵向边框
 };
 
 const props = withDefaults(defineProps<PropsType>(), {
-  tableData: () => [],
+  staticTableData: () => [],
   columnPropList: () => [],
-  border: true,
+  requestAuto: false,
   showPagination: true,
-  rowKey: "rowId"
+  rowKey: "rowId",
+  border: true
 });
 
 const tableRef = ref<InstanceType<typeof ElTable>>(); // table 实例
 const columnTypeList: TypeProps[] = ["selection", "radio", "index", "expand", "sort"]; // column 列类型
 const radio = ref(""); // radio单选值
-// 分页参数
-const pageable = ref<Pageable>({
-  currentPage: 1,
-  pageSize: 10,
-  total: 0
+
+// 表格数据 (组件中最终接收到的表格数据)
+const processTableData = computed(() => {
+  // 使用 接口返回的表格数据
+  if (!!props.requestApi) {
+    return tableData.value;
+  }
+  // 使用 静态表格数据 + 不使用分页组件
+  if (!!props.staticTableData?.length && !props.showPagination) {
+    return props.staticTableData;
+  } else {
+    // 使用 静态表格数据 + 使用分页组件
+    return props.staticTableData.slice(
+      (pageable.value.currentPage - 1) * pageable.value.pageSize,
+      pageable.value.pageSize * pageable.value.currentPage
+    );
+  }
 });
+
+onMounted(() => {
+  dragSort(); // 初始化拖拽排序
+  // 动态获取表格数据
+  if (props.requestAuto && !!props.requestApi) {
+    getTableData();
+  }
+  // 使用静态表格数据+分页组件
+  if (!!props.staticTableData.length && props.showPagination) {
+    pageable.value.total = props.staticTableData.length;
+  }
+});
+
+// 表格操作Hooks
+const {
+  tableData, // 接口返回的表格数据
+  pageable, // 分页参数
+  handleSizeChange,
+  handleCurrentChange,
+  getTableData // 获取表格数据
+} = useTableHook(props.requestApi, props.initParams, props.showPagination, props.handleResponseData);
 
 // emit事件
 const emits = defineEmits<{
   (e: "handleOperation", item: operationType, row: any): void;
-  (e: "handleSizeChange", pageSize: number): void;
-  (e: "handleCurrentChange", currentPage: number): void;
+  (e: "dragSort", newIndex: number, oldIndex: number): void;
 }>();
 
 // 操作列
 const handleOperation = async (item: operationType, row: any) => {
   console.log("handleOperation", item, row);
   emits("handleOperation", item, row);
-};
-
-// 改变分页条数
-const handleSizeChange = async (pageSize: number) => {
-  emits("handleSizeChange", pageSize);
-};
-
-// 改变当前分页页码
-const handleCurrentChange = async (currentPage: number) => {
-  emits("handleCurrentChange", currentPage);
 };
 
 // 重新渲染表格
@@ -111,13 +148,28 @@ const doLayout = () => {
 // 表格多选
 const { isSelected, selectedIdsList, selectedList, selectionChange } = useSelection(props.rowKey);
 
+// 拖拽排序
+const dragSort = () => {
+  const tbody = document.querySelector(".el-table__body-wrapper tbody") as HTMLElement;
+  Sortable.create(tbody, {
+    handle: ".move",
+    animation: 300,
+    onEnd({ newIndex, oldIndex }) {
+      const [removedItem] = processTableData.value.splice(oldIndex!, 1);
+      processTableData.value.splice(newIndex!, 0, removedItem);
+      emits("dragSort", newIndex, oldIndex);
+    }
+  });
+};
+
 // 向父组件暴露参数与方法
 defineExpose({
   pageable, // 分页参数
   isSelected, // 多选是否勾选
   selectedIdsList, // 被勾选的数据的rowKey对应的值
   selectedList,
-  doLayout
+  doLayout,
+  getTableData // 获取表格数据
 });
 </script>
 

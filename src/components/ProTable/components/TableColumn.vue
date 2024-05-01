@@ -4,6 +4,7 @@
 
 <script setup lang="tsx">
 import { ColumnProp, RenderScope, HeaderRenderScope } from "@/components/ProTable/interface/index.ts";
+import { MessageUtil } from "@/components/Message";
 
 defineProps<{ column: ColumnProp }>();
 const emits = defineEmits(["handleOperation"]);
@@ -12,7 +13,7 @@ const emits = defineEmits(["handleOperation"]);
 // 渲染单元格的文本数据
 const renderCellData = (item: ColumnProp, scope: RenderScope<any>) => {
   if (!item?.prop) {
-    console.error("请配置表格列的prop属性");
+    MessageUtil.ShowToast({ type: "warning", message: "请配置表格列的prop属性" });
     return;
   }
   return scope.row[item.prop] || "--";
@@ -53,6 +54,7 @@ const RenderTableColumn = (item: ColumnProp) => {
       {{
         // 自定义列内容
         default: (scope: RenderScope<any>) => {
+          // console.log("default", scope);
           // 渲染操作列
           if (item.prop === "operation") {
             return renderOperation(item, scope);
@@ -69,9 +71,12 @@ const RenderTableColumn = (item: ColumnProp) => {
           return renderCellData(item, scope);
         },
         // 自定义列头
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         header: (scope: HeaderRenderScope<any>) => {
           // console.log("header:", scope);
+          // 渲染表头
+          if (item.headerRender) {
+            return item.headerRender(scope);
+          }
           return item.label;
         }
       }}
@@ -90,5 +95,9 @@ const RenderTableColumn = (item: ColumnProp) => {
     cursor: pointer;
     color: #368fff;
   }
+}
+
+.abc {
+  display: flex;
 }
 </style>
