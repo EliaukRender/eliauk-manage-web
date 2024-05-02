@@ -1,14 +1,35 @@
 <template>
   <div class="page-main">
     <div>
-      <el-button type="primary" @click="search"> 查询 </el-button>
-      <el-button type="primary" @click="resetSearch"> 重置 </el-button>
+      <el-form :model="formData" inline>
+        <el-form-item label="姓名：" prop="userName">
+          <el-input v-model="formData.userName" clearable />
+        </el-form-item>
+        <el-form-item label="学号：" prop="userName">
+          <el-input v-model="formData.studentId" clearable />
+        </el-form-item>
+        <el-form-item label="年级：" prop="userName">
+          <el-select
+            v-model="formData.gradeCode"
+            placeholder="请选择"
+            style="width: 240px"
+            clearable
+            @change="changeGrade"
+          >
+            <el-option v-for="item in gradeOptions" :key="item.gradeCode" :label="item.label" :value="item.gradeCode" />
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div class="mb20">
+        <el-button type="primary" @click="search"> 查询 </el-button>
+        <el-button type="primary" @click="resetSearch"> 重置 </el-button>
+      </div>
     </div>
     <pro-table
       ref="table"
       :column-prop-list="columnsList"
-      :static-table-data="staticTableData"
-      :init-params="initParams"
+      :request-api="getTableDataApi"
+      :init-params="formData"
       :show-pagination="true"
       row-key="userId"
     />
@@ -21,44 +42,73 @@ import { ColumnProp, RenderScope } from "@/components/ProTable/interface";
 import { ref } from "vue";
 
 const table = ref();
-const initParams = ref({
-  name: "3131",
-  schoolId: "321"
+const formData = ref({
+  userName: "",
+  studentId: "",
+  gradeCode: ""
 });
 
+const gradeOptions = [
+  { label: "一年级", gradeCode: 1 },
+  { label: "二年级", gradeCode: 2 },
+  {
+    label: "三年级",
+    gradeCode: 3
+  }
+];
+
 const getTableDataApi = async (params: any) => {
-  console.log("getTableDataApi", params);
+  console.log("发起接口请求", params);
   // 模拟接口请求
   return await new Promise(resolve => {
     setTimeout(() => {
       resolve({
         currentPage: 1,
         pageSize: 10,
-        total: 1,
-        dataList: [{ userName: "接口返回的name" }]
+        total: 8,
+        dataList: [
+          { userId: "001", userName: "liuchang111", age: 18 },
+          { userId: "002", userName: "liuchang222", age: 20 },
+          { userId: "003", userName: "32312313", age: 20 },
+          { userId: "004", userName: "3213", age: 20 },
+          { userId: "005", userName: "liuch32131ang222", age: 20 },
+          { userId: "006", userName: "eqweqw", age: 20 },
+          { userId: "007", userName: "3123131", age: 20 },
+          { userId: "008", userName: "gegertgr", age: 20 }
+        ]
       });
-    }, 3000);
+    }, 1500);
   });
+};
+
+// 切换年级
+const changeGrade = () => {
+  table.value.getTableData();
 };
 
 const search = () => {
   table.value.getTableData();
 };
 
-const resetSearch = () => {};
+const resetSearch = () => {
+  formData.value.gradeCode = "";
+  formData.value.studentId = "";
+  formData.value.userName = "";
+  table.value.getTableData();
+};
 
 // 静态数据
-const staticTableData = [
-  // { userId: "001", userName: "liuchang111", age: 18 },
-  // { userId: "002", userName: "liuchang222", age: 20 },
-  // { userId: "003", userName: "32312313", age: 20 },
-  // { userId: "004", userName: "3213", age: 20 },
-  // { userId: "005", userName: "liuch32131ang222", age: 20 },
-  // { userId: "006", userName: "eqweqw", age: 20 },
-  // { userId: "007", userName: "3123131", age: 20 },
-  // { userId: "008", userName: "gegertgr", age: 20 },
-  // { userId: "009", userName: "321313", age: 20 }
-];
+// const staticTableData = [
+//   { userId: "001", userName: "liuchang111", age: 18 },
+//   { userId: "002", userName: "liuchang222", age: 20 },
+//   { userId: "003", userName: "32312313", age: 20 },
+//   { userId: "004", userName: "3213", age: 20 },
+//   { userId: "005", userName: "liuch32131ang222", age: 20 },
+//   { userId: "006", userName: "eqweqw", age: 20 },
+//   { userId: "007", userName: "3123131", age: 20 },
+//   { userId: "008", userName: "gegertgr", age: 20 },
+//   { userId: "009", userName: "321313", age: 20 }
+// ];
 
 const handleHeaderClick = () => {
   console.log("handleHeaderClick");

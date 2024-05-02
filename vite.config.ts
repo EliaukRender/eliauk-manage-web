@@ -49,7 +49,7 @@ export default defineConfig(({ mode }) => {
       proxy: {
         // "/evaluation": {
         // target: "http://10.8.2.184",
-        // changOrigin: true
+        // changeOrigin: true
         // }
       }
     },

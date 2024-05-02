@@ -9,3 +9,6 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any> | Vue;
   export default component;
 }
+
+//
+declare module "sortablejs";

@@ -51,3 +51,18 @@ export interface ColumnProp<T = any> {
   showOverflowTooltip?: boolean; // 冒泡显示
   headerRender?: (scope: HeaderRenderScope<T>) => VNode; // 自定义表头内容渲染（tsx语法）
 }
+
+// useTableHook的state的类型
+export interface UseTableState {
+  tableData: any[];
+  pageable: Pageable;
+  searchParam: {
+    [key: string]: any;
+  };
+  totalParam: {
+    [key: string]: any;
+  };
+  defaultParam: {
+    [key: string]: any;
+  };
+}

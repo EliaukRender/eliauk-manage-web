@@ -22,7 +22,7 @@ type Props = {
 };
 
 withDefaults(defineProps<Props>(), {
-  pageSizes: () => [1, 2, 4, 5]
+  pageSizes: () => [10, 20, 50, 100]
 });
 
 const emits = defineEmits(["handleSizeChange", "handleCurrentChange"]);

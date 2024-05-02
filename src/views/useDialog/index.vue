@@ -5,12 +5,16 @@
       <common-dialog :visible="dialogCfg.visible" @cancel="cancelDialog">
         <div>dialog的内容</div>
       </common-dialog>
-      <el-button type="primary" @click="openDialog"> useDialog </el-button>
+      <el-button type="primary" @click="openDialog">
+        useDialog
+      </el-button>
     </div>
     <!--drawer-->
     <div class="mb10">
       <drawer :visible="drawerCfg.visible" @cancel="cancelDrawer" />
-      <el-button type="primary" @click="openDrawer"> useDrawer </el-button>
+      <el-button type="primary" @click="openDrawer">
+        useDrawer
+      </el-button>
     </div>
   </div>
 </template>

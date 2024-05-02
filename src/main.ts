@@ -7,6 +7,7 @@ import "element-plus/dist/index.css"; // element-plus css
 import * as Icons from "@element-plus/icons-vue"; // element-plus icons
 import "virtual:svg-icons-register"; // svg icons
 import directives from "@/directives/index.ts"; // 自定义指令
+import I18n from "@/languages/index"; // vue i18n
 
 const app = createApp(App);
 
@@ -18,4 +19,5 @@ Object.keys(Icons).forEach(key => {
 app.use(directives);
 app.use(pinia);
 app.use(router);
+app.use(I18n);
 app.mount("#app");

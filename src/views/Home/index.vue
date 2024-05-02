@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img class="home-bg" src="@/assets/images/common/welcome.png" alt="welcome" />
+    <img class="home-bg" src="@/assets/images/common/welcome.png" alt="welcome">
   </div>
 </template>
 

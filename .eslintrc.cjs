@@ -26,14 +26,14 @@ module.exports = {
     "no-with": 2, // 禁用with
     "no-unreachable": 2, // 不能有无法执行的代码
     "no-unused-expressions": 2, // 禁止无用的表达式
-    "@typescript-eslint/no-unused-vars": [2, { vars: "all", args: "after-used" }], //不能有声明后未被使用的变量或参数
+    "@typescript-eslint/no-unused-vars": [2, { vars: "all", args: "after-used" }], // 不能有声明后未被使用的变量或参数
     "no-use-before-define": "off", // 未定义前不能使用
     "no-spaced-func": "off", // 函数名与括号之间允许有空格
     "no-param-reassign": 2, // 禁止给参数重新赋值
     "no-mixed-requires": [2, false], // 声明时不能混用声明类型
     "no-mixed-spaces-and-tabs": [2, false], // 禁止混用tab和空格
-    "no-multi-spaces": 2, //不能用多余的空格
-    "no-multi-str": 2, //字符串不能用\换行
+    "no-multi-spaces": 2, // 不能用多余的空格
+    "no-multi-str": 2, // 字符串不能用\换行
     "no-multiple-empty-lines": [2, { max: 2 }], // 空行最多不能超过2行
     "no-func-assign": 2, // 禁止重复的函数声明
     "no-empty": 2, // 块语句中的内容不能为空
@@ -44,24 +44,23 @@ module.exports = {
     indent: [2, 2, { SwitchCase: 1 }], // 强制使用一致的缩进
     eqeqeq: [2, "always"], // 要求使用 === 和 !==
     semi: [2, "always"], // 要求或禁止使用分号代替 ASI
-    quotes: [2, "double"], // 强制使用一致的反勾号、双引号或单引号
     "brace-style": [2, "1tbs", { allowSingleLine: true }], // if while function 后面的{必须与if在同一行。
     "space-before-function-paren": [0, "always"], // 函数定义时括号前面要不要有空格
     "semi-spacing": [0, { before: false, after: true }], //分号前后空格
     "prefer-const": 2, //首选const
     "padded-blocks": 0, //块语句内行首行尾是否要空行
     "max-params": [2, 5], //函数最多只能有5个参数
-    "key-spacing": [0, { beforeColon: false, afterColon: true }], //对象字面量中冒号的前后空格
-    "lines-around-comment": 0, //行前/行后备注
-    "max-depth": [2, 5], //嵌套块深度
+    "key-spacing": [0, { beforeColon: false, afterColon: true }], // 对象字面量中冒号的前后空格
+    "lines-around-comment": 0, // 行前/行后备注
+    "max-depth": [2, 5], // 嵌套块深度
     "max-len": [2, 120], // 每行代码最大长度
     "max-nested-callbacks": [2, 5], //回调嵌套深度
-    "dot-location": 0, //对象访问符的位置，换行的时候在行首还是行尾
+    "dot-location": 0, // 对象访问符的位置，换行的时候在行首还是行尾
     "dot-notation": [0, { allowKeywords: true }], //避免不必要的方括号
     "eol-last": 0, //文件以单一的换行符结束
     "comma-dangle": [2, "never"], // 对象字面量项尾不能有逗号
-    "comma-spacing": 0, //逗号前后的空格
-    "comma-style": [2, "last"], //逗号风格，换行时在行首还是行尾
+    "comma-spacing": 0, // 逗号前后的空格
+    "comma-style": [2, "last"], // 逗号风格，换行时在行首还是行尾
     complexity: [2, 11], //循环复杂度
     "linebreak-style": [0, "windows"], //换行风格
     // 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always 参数：[ 之前和 ] 之后必须带空格
@@ -74,6 +73,7 @@ module.exports = {
     "vue/component-definition-name-casing": [2, "PascalCase"], // 组件的 name 属性必须符合 PascalCase
     "vue/component-name-in-template-casing": [2, "kebab-case"], // 限制组件名的风格
     "vue/match-component-file-name": 2, // 组件名称必须和文件名一致
+    "vue/require-default-prop": "off", // vue的prop属性不需要必须指定默认值
     "no-dupe-class-members": 2, //禁止重复定义类的成员
     "@typescript-eslint/no-non-null-assertion": "off",
     "vue/multi-word-component-names": [

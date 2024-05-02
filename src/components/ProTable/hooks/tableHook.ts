@@ -1,5 +1,5 @@
 import { reactive, toRefs } from "vue";
-import { Pageable } from "@/components/ProTable/interface";
+import { Pageable, UseTableState } from "@/components/ProTable/interface";
 import { MessageUtil } from "@/components/Message/index.ts";
 
 /**
@@ -19,7 +19,7 @@ export const useTableHook = (
   /**
    * @description: Hooks数据
    */
-  const state = reactive({
+  const state = reactive<UseTableState>({
     tableData: [], // 表格数据
     pageable: {
       // 分页数据
@@ -36,7 +36,7 @@ export const useTableHook = (
    * @description: 获取表格数据
    */
   const getTableData = async () => {
-    console.log("getTableData", requestApi);
+    console.log("获取表格数据", requestApi);
     if (!requestApi) {
       MessageUtil.ShowToast({ type: "warning", message: "请配置获取表格数据的接口请求函数" });
       return;
@@ -49,6 +49,7 @@ export const useTableHook = (
     );
     // 接口请求获取表格数据
     let data = await requestApi({ ...state.totalParam, ...state.defaultParam });
+    console.log("接口返回的数据：", data);
     // 对返回的数据作进一步的处理 （比如接口返回的是list或者data，而不是datalist，那么就需要额外处理）
     if (!!handleResponseData) {
       data = handleResponseData(data);

@@ -25,10 +25,10 @@
             <slot v-else :name="item.type" v-bind="scope" />
           </template>
           <!-- radio列(单选列) -->
-          <el-radio v-if="item.type == 'radio'" v-model="radio" :label="scope.row[rowKey]">
+          <el-radio v-if="item.type == 'radio'" v-model="radioValue" :label="scope.row[rowKey]">
             <i />
           </el-radio>
-          <!-- sort列(拖拽排序列) -->
+          <!-- sort列(拖拽行排序) -->
           <el-tag v-if="item.type == 'sort'" class="move">
             <el-icon>
               <DCaret />
@@ -67,25 +67,25 @@ type PropsType = {
   columnPropList: ColumnProp[]; // 表格列配置
   requestApi?: (params: any) => Promise<any>; // 请求表格数据的api函数
   requestAuto?: boolean; // 是否自动发起接口请求
-  initParams?: Object; // 请求表格数据的参数 (一般是表单形成的参数)
+  initParams?: { [key: string]: any }; // 请求表格数据的参数 (一般是表单形成的参数)
   handleResponseData?: (data: any) => any; // 对接口返回的数据作处理(比如接口返回字段参差不齐，此时就需要额外处理后再赋值给表格组件中的变量)
   showPagination?: boolean; // 默认显示分页组件
-  rowKey?: string; // // 行数据的Key，用于区分该行数据的唯一性
+  rowKey?: string; // // 行数据的Key，用于区分该行数据的唯一性，默认值是id
   border?: boolean; // 是否带有纵向边框
 };
 
 const props = withDefaults(defineProps<PropsType>(), {
   staticTableData: () => [],
   columnPropList: () => [],
-  requestAuto: false,
+  requestAuto: true, // 自动发起接口请求
   showPagination: true,
-  rowKey: "rowId",
+  rowKey: "id",
   border: true
 });
 
 const tableRef = ref<InstanceType<typeof ElTable>>(); // table 实例
 const columnTypeList: TypeProps[] = ["selection", "radio", "index", "expand", "sort"]; // column 列类型
-const radio = ref(""); // radio单选值
+const radioValue = ref(""); // radio单选值
 
 // 表格数据 (组件中最终接收到的表格数据)
 const processTableData = computed(() => {
@@ -129,7 +129,7 @@ const {
 // emit事件
 const emits = defineEmits<{
   (e: "handleOperation", item: operationType, row: any): void;
-  (e: "dragSort", newIndex: number, oldIndex: number): void;
+  (e: "dragSort", newIndex?: number, oldIndex?: number);
 }>();
 
 // 操作列
@@ -148,7 +148,7 @@ const doLayout = () => {
 // 表格多选
 const { isSelected, selectedIdsList, selectedList, selectionChange } = useSelection(props.rowKey);
 
-// 拖拽排序
+// 拖拽行排序
 const dragSort = () => {
   const tbody = document.querySelector(".el-table__body-wrapper tbody") as HTMLElement;
   Sortable.create(tbody, {
@@ -167,7 +167,8 @@ defineExpose({
   pageable, // 分页参数
   isSelected, // 多选是否勾选
   selectedIdsList, // 被勾选的数据的rowKey对应的值
-  selectedList,
+  selectedList, // 被勾选的所有数据
+  radioValue, // 单选值
   doLayout,
   getTableData // 获取表格数据
 });

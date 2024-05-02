@@ -1,17 +1,21 @@
 <template>
   <div class="header">
     <div class="left" @click="goToHome">
-      <img src="@/assets/images/common/logo.png" alt="" />
+      <img src="@/assets/images/common/logo.png" alt="">
       <span class="title">Vue3-Ts-Vite-Pina</span>
     </div>
     <div class="right">
       <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
       <el-popover placement="bottom" :width="80" trigger="hover" popper-class="username-popover">
         <div class="operation">
-          <div class="login-out" @click="loginOut">退出登录</div>
+          <div class="login-out" @click="loginOut">
+            退出登录
+          </div>
         </div>
         <template #reference>
-          <div class="user-name">用户信息</div>
+          <div class="user-name">
+            用户信息
+          </div>
         </template>
       </el-popover>
     </div>
