@@ -35,7 +35,7 @@
   </div>
 </template>
 /** * 注释：封装的对话框Dialog组件 * */
-<script lang="ts" setup>
+<script lang="ts" setup name="Dialog">
 import { computed } from "vue";
 
 interface PropsType {

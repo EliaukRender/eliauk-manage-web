@@ -25,7 +25,7 @@ module.exports = {
     "@typescript-eslint/ban-types": ["off"],
     "no-with": 2, // 禁用with
     "no-unreachable": 2, // 不能有无法执行的代码
-    "no-unused-expressions": 2, // 禁止无用的表达式
+    "no-unused-expressions": "off", // 允许无用的表达式（短路写法、合并运算符会经常使用）
     "@typescript-eslint/no-unused-vars": [2, { vars: "all", args: "after-used" }], // 不能有声明后未被使用的变量或参数
     "no-use-before-define": "off", // 未定义前不能使用
     "no-spaced-func": "off", // 函数名与括号之间允许有空格

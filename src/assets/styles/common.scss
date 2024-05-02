@@ -3,7 +3,7 @@
  * */
 
 .page-main {
-  height: calc(100% - 20px); // 减去自身40px的padding值
+  height: calc(100% - 40px); // 减去自身的padding-top与padding-bottom
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

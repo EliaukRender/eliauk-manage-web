@@ -2,9 +2,9 @@
   <div class="page-main">
     <!--  dialog-->
     <div class="mb10">
-      <common-dialog :visible="dialogCfg.visible" @cancel="cancelDialog">
+      <com-dialog :visible="dialogCfg.visible" @cancel="cancelDialog">
         <div>dialog的内容</div>
-      </common-dialog>
+      </com-dialog>
       <el-button type="primary" @click="openDialog">
         useDialog
       </el-button>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import CommonDialog from "@/components/CommonDialog/index.vue";
+import ComDialog from "@/components/Dialog/index.vue";
 import Drawer from "@/components/Drawer/index.vue";
 import { ref } from "vue";
 
