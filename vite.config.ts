@@ -41,15 +41,28 @@ export default defineConfig(({ mode }) => {
       pure: mode === "production" ? ["console.log", "debugger"] : []
     },
     build: {
-      sourcemap: mode !== "production" // 是否显示源代码
+      outDir: "dist", // 打包输出目录名称
+      minify: "esbuild", // esbuild 打包更快
+      sourcemap: mode !== "production", // 是否显示源代码
+      reportCompressedSize: false, // 禁用 gzip 压缩大小报告，可略微减少打包时间
+      chunkSizeWarningLimit: 2000, // 规定触发警告的 chunk 大小
+      rollupOptions: {
+        output: {
+          // Static resource classification and packaging
+          chunkFileNames: "assets/js/[name]-[hash].js",
+          entryFileNames: "assets/js/[name]-[hash].js",
+          assetFileNames: "assets/[ext]/[name]-[hash].[ext]"
+        }
+      }
     },
     server: {
       host: true,
       hmr: true,
       proxy: {
         // "/evaluation": {
-        // target: "http://10.8.2.184",
-        // changeOrigin: true
+        //   target: "http://10.8.2.184",
+        //   changeOrigin: true,
+        //   rewrite: path => path.replace(new RegExp(`^/evaluation`), "")
         // }
       }
     },
