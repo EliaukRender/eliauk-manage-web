@@ -4,7 +4,7 @@ export interface MenuItem {
   name: string;
   componentName?: string;
   component?: () => Promise<unknown>;
-  meta: {
+  meta?: {
     menuName: string;
     menuIcon: string;
   };

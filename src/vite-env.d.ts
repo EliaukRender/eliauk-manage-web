@@ -10,5 +10,5 @@ declare module "*.vue" {
   export default component;
 }
 
-//
+// 拖拽
 declare module "sortablejs";

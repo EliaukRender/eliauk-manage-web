@@ -1,21 +1,17 @@
 <template>
   <div class="header">
     <div class="left" @click="goToHome">
-      <img src="@/assets/images/common/logo.png" alt="">
+      <img src="@/assets/images/common/logo.png" alt="" />
       <span class="title">Vue3-Ts-Vite-Pina</span>
     </div>
     <div class="right">
       <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
       <el-popover placement="bottom" :width="80" trigger="hover" popper-class="username-popover">
         <div class="operation">
-          <div class="login-out" @click="loginOut">
-            退出登录
-          </div>
+          <div class="login-out" @click="loginOut">退出登录</div>
         </div>
         <template #reference>
-          <div class="user-name">
-            用户信息
-          </div>
+          <div class="user-name">用户信息</div>
         </template>
       </el-popover>
     </div>
@@ -24,9 +20,12 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
-import { HOME_URL } from "@/config/globalConfig.ts";
+import { HOME_URL, LOGIN_URL } from "@/config/globalConfig.ts";
+import { useUserStore } from "@/store/modules/userStore.ts";
+import { MessageUtil } from "@/components/Message";
 
 const router = useRouter();
+const userStore = useUserStore();
 
 // 前往HOME页
 const goToHome = () => {
@@ -36,6 +35,15 @@ const goToHome = () => {
 // 退出登录
 const loginOut = () => {
   console.log("loginOut");
+  MessageUtil.ShowConfirmBox({
+    type: "warning",
+    confirmTitle: "确认退出登录？",
+    confirmContent: "退出后数据将被清空，需重新登录后才能查看系统页面！",
+    callBack: () => {
+      userStore.setToken("");
+      router.push(LOGIN_URL);
+    }
+  });
 };
 </script>
 

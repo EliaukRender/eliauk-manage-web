@@ -12,17 +12,17 @@ export const useAuthStore = defineStore({
     authMenuList: [] // 授权后的菜单列表
   }),
   getters: {
-    // 获取
+    // 获取基于权限过滤后的菜单列表
     authMenuListGetter: state => {
       // todo 这里可以进一步过滤菜单列表
       return state.authMenuList;
     }
   },
   actions: {
-    // 获取授权后的
+    // 获取授权后菜单列表
     getAuthMenuList() {
       // todo 这里可以通过接口请求获取该账号对应的菜单列表
-      this.authMenuList = menuList;
+      this.authMenuList = [...menuList];
     }
   }
 });

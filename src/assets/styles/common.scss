@@ -17,6 +17,12 @@
   display: flex;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -36,4 +42,3 @@
 .mb30 {
   margin-bottom: 10px;
 }
-

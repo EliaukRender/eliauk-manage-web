@@ -1,6 +1,5 @@
 /**
  *  note: 基于【菜单列表】动态初始化路由规则列表；同理，菜单列表可以进一步基于【权限】筛选后得到
- *  author: changliu
  * */
 import router from "@/router/index.ts";
 import { RouteRecordRaw } from "vue-router";
@@ -17,6 +16,7 @@ const modules = import.meta.glob("@/views/**/*.vue");
  * 注意： 【"/src/views" + item.componentName + ".vue"】 要与该路由页面在项目中的路径保持一致
  */
 export const initDynamicRouter = async () => {
+  console.log("initDynamicRouter");
   const authStore = useAuthStore();
   const userStore = useUserStore();
   try {

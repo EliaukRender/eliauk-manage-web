@@ -21,12 +21,8 @@
         </el-form-item>
       </el-form>
       <div class="mb20">
-        <el-button type="primary" @click="search">
-          查询
-        </el-button>
-        <el-button type="primary" @click="resetSearch">
-          重置
-        </el-button>
+        <el-button type="primary" @click="search"> 查询 </el-button>
+        <el-button type="primary" @click="resetSearch"> 重置 </el-button>
       </div>
     </div>
     <pro-table

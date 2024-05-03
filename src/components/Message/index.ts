@@ -12,7 +12,7 @@ interface ToastOptions {
 interface ConfirmOptions {
   confirmTitle: string;
   confirmContent: string;
-  callBack: () => {};
+  callBack: () => void;
   type?: "success" | "warning" | "info" | "error";
   showCancelButton?: boolean;
   showConfirmButton?: boolean;
