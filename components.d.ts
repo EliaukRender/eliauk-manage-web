@@ -10,7 +10,6 @@ declare module 'vue' {
     403: typeof import('./src/components/ErrorMsgPage/403.vue')['default']
     404: typeof import('./src/components/ErrorMsgPage/404.vue')['default']
     500: typeof import('./src/components/ErrorMsgPage/500.vue')['default']
-    CommonDialog: (typeof import("@/components/Dialog/index.vue"))["default"]
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
     Drawer: typeof import('./src/components/Drawer/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
@@ -34,7 +33,6 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
-    ErrorMsgPage: (typeof import("./src/components/ErrorMsgPage/index.vue"))["default"]
     Layout: typeof import('./src/components/Layout/index.vue')['default']
     LeftAsideMenu: typeof import('./src/components/Layout/components/LeftAsideMenu.vue')['default']
     Loading: typeof import('./src/components/Loading/index.vue')['default']
@@ -44,7 +42,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
-    Table: (typeof import("@/components/ProTable/index.vue"))["default"]
     TableColumn: typeof import('./src/components/ProTable/components/TableColumn.vue')['default']
   }
 }

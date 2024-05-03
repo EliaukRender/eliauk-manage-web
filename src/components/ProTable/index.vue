@@ -59,7 +59,7 @@ import { computed, nextTick, onMounted, ref } from "vue";
 import PaginationCmp from "@/components/ProTable/components/PaginationCmp.vue";
 import { ElTable } from "element-plus";
 import { useSelection } from "@/components/ProTable/hooks/selectionHook.ts";
-import Sortable from "sortablejs";
+import * as Sortable from "sortablejs";
 import { useTableHook } from "@/components/ProTable/hooks/tableHook.ts";
 
 type PropsType = {

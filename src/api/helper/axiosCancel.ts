@@ -1,5 +1,5 @@
 import { CustomAxiosRequestConfig } from "../index";
-import qs from "qs";
+import * as qs from "qs";
 
 // 声明一个 Map 用于存储每个请求的标识 和 取消函数
 const pendingMap = new Map<string, AbortController>();

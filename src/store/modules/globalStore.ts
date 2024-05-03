@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { GlobalState } from "@/store/interface";
 import piniaPersistConfig from "@/store/persist.ts";
+import { ObjToKeyValArray } from "@/types/globalType.ts";
 
 /**
  *  note: 项目全局设置
@@ -8,7 +9,7 @@ import piniaPersistConfig from "@/store/persist.ts";
 export const useGlobalStore = defineStore({
   id: "global-store",
   state: (): GlobalState => ({
-    language: "" // 当前系统语言
+    language: null // 当前系统语言
   }),
   getters: {},
   actions: {
