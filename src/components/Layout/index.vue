@@ -17,6 +17,7 @@ import LeftAsideMenu from "@/components/Layout/components/LeftAsideMenu.vue";
 
 <style lang="scss" scoped>
 .layout {
+  min-width: 600px;
   height: 100vh;
   background-color: #f2f3f5;
 

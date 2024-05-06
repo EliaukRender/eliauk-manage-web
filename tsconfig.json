@@ -32,7 +32,8 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*.ts",
