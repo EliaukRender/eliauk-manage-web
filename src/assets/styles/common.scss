@@ -3,7 +3,8 @@
  * */
 
 .page-main {
-  height: calc(100% - 40px); // 减去自身的padding-top与padding-bottom
+  /* 减去自身的padding-top与padding-bottom */
+  height: calc(100% - 40px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

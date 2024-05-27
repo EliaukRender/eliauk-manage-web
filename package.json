@@ -10,7 +10,9 @@
     "build:pro": "vue-tsc && vite build --mode production",
     "preview": "npm run build:dev && vite preview",
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
-    "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\""
+    "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+    "clean": "rimraf dist",
+    "build:css": "postcss src/assets/styles -d dist/css/"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -36,6 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
@@ -46,6 +49,8 @@
     "eslint-plugin-vue": "^9.25.0",
     "globals": "^15.0.0",
     "path": "^0.12.7",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
     "prettier": "^3.2.5",
     "sass": "^1.75.0",
     "sass-loader": "^7.3.1",

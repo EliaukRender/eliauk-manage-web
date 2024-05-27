@@ -1,9 +1,24 @@
-# Vue 3 + TypeScript + Vite
+# Vue 3 + TypeScript + Vite + Pinia
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 运行命令
 
-## Recommended Setup
+`npm run dev： 本地启动项目`\
+`npm run build:dev： 打包开发环境代码`\
+`npm run build:test： 打包测试环境代码`\
+`npm run build:pro： 打包生产环境代码`\
+`npm run lint:eslint： eslint代码格式化`\
+`npm run lint:prettier： prettier代码格式化`
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+## 目录结构
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+src-api：axios请求相关；\
+src-assets：项目静态资源；\
+src-components：项目公共组件；\
+src-directives：自定义指令；\
+src-router：路由相关；\
+src-store：状态管理；\
+src-types：ts类型管理；
+
+
+
+
