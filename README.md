@@ -2,6 +2,7 @@
 
 ## 运行命令
 
+`npm i： 下载项目依赖`\
 `npm run dev： 本地启动项目`\
 `npm run build:dev： 打包开发环境代码`\
 `npm run build:test： 打包测试环境代码`\

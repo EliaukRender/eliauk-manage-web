@@ -12,6 +12,7 @@
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
     "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
     "clean": "rimraf dist",
+    "cleanModules": "rimraf node_modules",
     "build:css": "postcss src/assets/styles -d dist/css/"
   },
   "dependencies": {

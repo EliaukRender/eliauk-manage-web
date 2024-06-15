@@ -8,9 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
+eliauk-vue3-web
 *.local
+*.zip
 
 # Editor directories and files
 .vscode/*

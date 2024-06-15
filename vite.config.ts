@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => {
       pure: mode === "production" ? ["console.log", "debugger"] : []
     },
     build: {
-      outDir: "dist", // 打包输出目录名称
+      outDir: "eliauk-vue3-web", // 打包输出目录名称
       minify: "esbuild", // esbuild 打包更快
       sourcemap: mode !== "production", // 是否显示源代码
       reportCompressedSize: false, // 禁用 gzip 压缩大小报告，可略微减少打包时间
