@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => {
       pure: mode === "production" ? ["console.log", "debugger"] : []
     },
     build: {
-      outDir: "eliauk-vue3-web", // 打包输出目录名称
+      outDir: "eliauk-manage-web", // 打包输出目录名称
       minify: "esbuild", // esbuild 打包更快
       sourcemap: mode !== "production", // 是否显示源代码
       reportCompressedSize: false, // 禁用 gzip 压缩大小报告，可略微减少打包时间
@@ -59,11 +59,11 @@ export default defineConfig(({ mode }) => {
       host: true,
       hmr: true,
       proxy: {
-        // "/evaluation": {
-        //   target: "http://10.8.2.184",
-        //   changeOrigin: true,
-        //   rewrite: path => path.replace(new RegExp(`^/evaluation`), "")
-        // }
+        "/api": {
+          target: "http://47.113.177.51:53000",
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, "/")
+        }
       }
     },
     // css相关配置

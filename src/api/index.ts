@@ -15,8 +15,8 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 
 // 基础请求配置
 const config = {
-  baseURL: "", // 请求根路径
-  timeout: 1000 * 30 // 潮湿时间
+  baseURL: "/api", // 请求根路径
+  timeout: 1000 * 30 // 超时时间
 };
 
 const axiosCanceler = new AxiosCanceler();
