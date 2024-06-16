@@ -1,7 +1,7 @@
 <template>
   <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" size="large">
     <el-form-item prop="username">
-      <el-input v-model="loginForm.username" placeholder="用户名：任意输入">
+      <el-input v-model="loginForm.username" placeholder="用户名：admin">
         <template #prefix>
           <el-icon class="el-input__icon">
             <user />
@@ -13,7 +13,7 @@
       <el-input
         v-model="loginForm.password"
         type="password"
-        placeholder="密码：任意输入"
+        placeholder="密码：123456"
         show-password
         autocomplete="new-password"
       >
@@ -88,7 +88,7 @@ const handleLogin = (formEl: FormInstance | undefined) => {
       await initDynamicRouter();
 
       // 跳转到首页
-      router.push(HOME_URL);
+      await router.push(HOME_URL);
     } finally {
       loading.value = false;
     }

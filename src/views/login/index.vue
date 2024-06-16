@@ -8,7 +8,7 @@
         <div class="login-logo">
           <img class="login-icon" src="../../assets/images/login/login-logo.svg" alt="">
           <h2 class="logo-text">
-            Vue3-Ts-Vite-Pina
+            EliaukManageWeb
           </h2>
         </div>
         <login-form />
