@@ -6,14 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build:dev": "vue-tsc && vite build --mode development",
-    "build:test": "vue-tsc && vite build --mode test",
     "build:pro": "vue-tsc && vite build --mode production",
-    "preview": "npm run build:dev && vite preview",
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
     "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
-    "clean": "rimraf dist",
-    "cleanModules": "rimraf node_modules",
-    "build:css": "postcss src/assets/styles -d dist/css/"
+    "clean": "rimraf eliauk-manage-web",
+    "deploy": "npm run build:pro && node ./deploy.js"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",

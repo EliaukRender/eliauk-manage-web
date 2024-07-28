@@ -51,7 +51,7 @@ import { initDynamicRouter } from "@/router/routes/dynamicRoutes.ts";
 import { CircleClose, UserFilled } from "@element-plus/icons-vue";
 import type { ElForm } from "element-plus";
 import { ReqLoginForm } from "@/api/interface/commonTypes.ts";
-import { login } from "@/api/modules/login.ts";
+// import { login } from "@/api/modules/login.ts";
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -81,8 +81,8 @@ const handleLogin = (formEl: FormInstance | undefined) => {
     loading.value = true;
     try {
       // 执行登录接口
-      const { data } = await login({ ...loginForm });
-      userStore.setToken(data.token);
+      // const { data } = await login({ ...loginForm });
+      userStore.setToken("token");
 
       // 添加动态路由
       await initDynamicRouter();

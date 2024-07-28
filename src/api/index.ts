@@ -15,7 +15,7 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 
 // 基础请求配置
 const config = {
-  baseURL: "/api", // 请求根路径
+  baseURL: "/manage", // 请求根路径
   timeout: 1000 * 30 // 超时时间
 };
 
@@ -24,10 +24,10 @@ const axiosCanceler = new AxiosCanceler();
 // 封装请求
 class RequestHttp {
   service: AxiosInstance;
-
+  
   public constructor(config: AxiosRequestConfig) {
     this.service = axios.create(config);
-
+    
     /**
      * @description: 请求拦截器
      */
@@ -47,7 +47,7 @@ class RequestHttp {
         return Promise.reject(error);
       }
     );
-
+    
     /**
      * @description: 响应拦截器
      */
@@ -93,14 +93,14 @@ class RequestHttp {
       }
     );
   }
-
+  
   /**
    * @description 常用请求方法封装
    */
   get<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {
     return this.service.get(url, { params, ..._object });
   }
-
+  
   post<T>(url: string, params?: object | string, _object = {}): Promise<ResultData<T>> {
     return this.service.post(url, params, _object);
   }
