@@ -2,13 +2,13 @@
   <div class="login-container flex-center">
     <div class="login-box">
       <div class="login-left">
-        <img class="login-left-img" src="../../assets/images/login/login_left.png" alt="login">
+        <img class="login-left-img" src="@/assets/images/common/login-left.png" alt="login">
       </div>
       <div class="login-form">
         <div class="login-logo">
-          <img class="login-icon" src="../../assets/images/login/login-logo.svg" alt="">
+          <img class="login-icon" src="@/assets/images/common/logo.jpg" alt="">
           <h2 class="logo-text">
-            EliaukManageWeb
+            EliaukManage
           </h2>
         </div>
         <login-form />

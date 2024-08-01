@@ -18,7 +18,7 @@ import { Pageable } from "@/components/ProTable/interface/index.ts";
 
 type Props = {
   pageable: Pageable;
-  pageSizes: number[];
+  pageSizes?: number[];
 };
 
 withDefaults(defineProps<Props>(), {

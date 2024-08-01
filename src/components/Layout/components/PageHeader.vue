@@ -1,11 +1,11 @@
 <template>
   <div class="header">
     <div class="left" @click="goToHome">
-      <img src="@/assets/images/common/logo.png" alt="">
-      <span class="title">Vue3-Ts-Vite-Pina</span>
+      <img src="@/assets/images/common/logo.jpg" alt="">
+      <span class="title">EliaukManage</span>
     </div>
     <div class="right">
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+      <svg-icon class="svg-user" name="expression-4" />
       <el-popover placement="bottom" :width="80" trigger="hover" popper-class="username-popover">
         <div class="operation">
           <div class="login-out" @click="loginOut">
@@ -14,7 +14,7 @@
         </div>
         <template #reference>
           <div class="user-name">
-            用户信息
+            EliaukRender
           </div>
         </template>
       </el-popover>
@@ -56,7 +56,8 @@ const loginOut = () => {
   @include flexRow();
   height: $page-header-height;
   padding: 0 24px;
-  background-color: #f2e4c6;
+  background: linear-gradient(45deg, $mld_blue_one, $french_Cool_blue);
+  color: $french_Cool_light_gray;
 
   .left {
     @include flexRow();
@@ -70,16 +71,13 @@ const loginOut = () => {
       padding: 0 10px;
       font-size: 20px;
       font-weight: 600;
-      color: #a97642;
     }
   }
 
   .right {
     @include flexRow();
 
-    .el-avatar {
-      width: 35px;
-      height: 35px;
+    .svg-user {
       margin-right: 10px;
     }
 

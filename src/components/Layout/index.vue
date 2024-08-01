@@ -22,10 +22,11 @@ import LeftAsideMenu from "@/components/Layout/components/LeftAsideMenu.vue";
   background-color: #f2f3f5;
 
   .body {
-    height: calc(100vh - $page-header-height - 40px); // 40px是纵轴方向的padding值
+    height: calc(100vh - $page-header-height); // 40px是纵轴方向的padding值
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    box-sizing: border-box;
 
     .main {
       width: calc(100% - $aside-menu-width); // 40px是横轴方向的padding值

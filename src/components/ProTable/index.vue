@@ -63,7 +63,7 @@ import Sortable from "sortablejs";
 import { useTableHook } from "@/components/ProTable/hooks/tableHook.ts";
 
 type PropsType = {
-  staticTableData: any[]; // 表格静态数据（不需要使用接口获取表格数据）
+  staticTableData?: any[]; // 表格静态数据（不需要使用接口获取表格数据）
   columnPropList: ColumnProp[]; // 表格列配置
   requestApi?: (params: any) => Promise<any>; // 请求表格数据的api函数
   requestAuto?: boolean; // 是否自动发起接口请求

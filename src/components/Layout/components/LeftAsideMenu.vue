@@ -61,9 +61,11 @@ const defaultOpends = computed(() => {
 //   isCollapse.value = !isCollapse.value;
 // };
 
-const handleOpen = () => {};
+const handleOpen = () => {
+};
 
-const handleClose = () => {};
+const handleClose = () => {
+};
 </script>
 
 <style lang="scss" scoped>
@@ -92,23 +94,23 @@ const handleClose = () => {};
         padding-bottom: 0;
 
         &:hover {
-          background-color: $theme-light-color !important;
+          background-color: $mld_blue_five !important;
         }
       }
 
       .el-menu-item {
         margin: 5px;
 
+        &:hover {
+          margin: 5px;
+          background-color: $mld_blue_five;
+        }
+
         &.is-active {
           font-size: 14px;
           font-weight: 600;
           color: #ffffff;
-          background-color: $theme-color;
-        }
-
-        &:hover {
-          margin: 5px;
-          background-color: $theme-light-color;
+          background-color: $mld_blue_one;
         }
       }
     }

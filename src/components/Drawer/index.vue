@@ -40,26 +40,26 @@
 </template>
 
 /** * 注释：封装的抽屉Drawer组件 * */
-<script setup lang="ts" name="drawer">
+<script setup lang="ts" name="Drawer">
 interface PropsType {
   visible: boolean;
-  title: string;
-  customWidth: number; // 自定义抽屉的宽度
-  isBeforeClose: boolean; // 是否需要关闭前的回调
-  direction: "rtl" | "ltr" | "ttb" | "btt"; // 抽屉打开的方向
-  closeOnClickModal: boolean;
-  closeOnPressEscape: boolean;
-  showModal: boolean;
-  showClose: boolean; // 是否显示关闭按钮
-  showHeader: boolean; // 是否显示标题栏(包括关闭按钮)
-  showDefaultHeader: boolean; // 是否显示头部内容
-  showDefaultFooter: boolean; // 是否显示底部按钮
-  showCancelBtn: boolean; // 是否显示底部取消按钮
-  showConfirmBtn: boolean; // 是否显示底部确认按钮
-  cancelBtnText: string; // 底部'取消'按钮文本
-  confirmBtnText: string; // 底部'确认'按钮文本
-  confirmBtnLoading: boolean; // 是否显示底部'确认'按钮的loading效果
-  disabledConfirmBtn: boolean; // 是否禁用底部'确认'按钮
+  title?: string;
+  customWidth?: number; // 自定义抽屉的宽度
+  isBeforeClose?: boolean; // 是否需要关闭前的回调
+  direction?: "rtl" | "ltr" | "ttb" | "btt"; // 抽屉打开的方向
+  closeOnClickModal?: boolean;
+  closeOnPressEscape?: boolean;
+  showModal?: boolean;
+  showClose?: boolean; // 是否显示关闭按钮
+  showHeader?: boolean; // 是否显示标题栏(包括关闭按钮)
+  showDefaultHeader?: boolean; // 是否显示头部内容
+  showDefaultFooter?: boolean; // 是否显示底部按钮
+  showCancelBtn?: boolean; // 是否显示底部取消按钮
+  showConfirmBtn?: boolean; // 是否显示底部确认按钮
+  cancelBtnText?: string; // 底部'取消'按钮文本
+  confirmBtnText?: string; // 底部'确认'按钮文本
+  confirmBtnLoading?: boolean; // 是否显示底部'确认'按钮的loading效果
+  disabledConfirmBtn?: boolean; // 是否禁用底部'确认'按钮
 }
 
 const props = withDefaults(defineProps<PropsType>(), {

@@ -43,5 +43,25 @@ export const menuList: MenuItem[] = [
         }
       }
     ]
+  },
+  {
+    path: "/usePPT",
+    name: "usePPT",
+    componentName: "",
+    meta: {
+      menuName: "研究PPT",
+      menuIcon: "menu"
+    },
+    children: [
+      {
+        path: "/usePPT/index",
+        name: "usePPT-index",
+        componentName: "/usePPT/index",
+        meta: {
+          menuName: "效果展示",
+          menuIcon: "ElementPlus"
+        }
+      }
+    ]
   }
 ];
