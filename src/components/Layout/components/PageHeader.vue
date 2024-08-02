@@ -70,8 +70,11 @@ const loginOut = () => {
 
     .title {
       padding: 0 10px;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 600;
+      background: linear-gradient(90deg, #ffffff, $french_Cool_light_gray);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
