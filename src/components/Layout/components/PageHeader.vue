@@ -14,7 +14,7 @@
         </div>
         <template #reference>
           <div class="user-name">
-            EliaukRender
+            Eliauk
           </div>
         </template>
       </el-popover>
@@ -58,24 +58,29 @@ const loginOut = () => {
   padding: 0 24px;
   background: linear-gradient(45deg, $mld_blue_one, $french_Cool_blue);
   color: $french_Cool_light_gray;
+  font-family: Alimama;
 
   .left {
     @include flexRow();
     cursor: pointer;
 
     > img {
-      width: 35px;
+      width: 40px;
     }
 
     .title {
       padding: 0 10px;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 600;
+      background: linear-gradient(90deg, #ffffff, $french_Cool_light_gray);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
   .right {
     @include flexRow();
+    font-size: 16px;
 
     .svg-user {
       margin-right: 10px;
