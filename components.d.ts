@@ -12,7 +12,6 @@ declare module 'vue' {
     500: typeof import('./src/components/ErrorMsgPage/500.vue')['default']
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
     Drawer: typeof import('./src/components/Drawer/index.vue')['default']
-    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDialog: typeof import('element-plus/es')['ElDialog']

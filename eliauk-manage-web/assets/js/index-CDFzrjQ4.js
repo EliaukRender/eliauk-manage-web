@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{R as o,o as t}from"./index-CPnw0WSf.js";const c={},n={class:"page-main"};function r(s,a){return t(),o("div",n," ppt ")}const p=e(c,[["render",r]]);export{p as default};

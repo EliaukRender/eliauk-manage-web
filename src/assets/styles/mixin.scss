@@ -18,6 +18,21 @@
 }
 
 /**
+ * @description: 阴影效果
+*/
+@mixin boxShadow() {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@mixin boxShadowRight() {
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin boxShadowLeft() {
+  box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+/**
  *  注释：color
  * */
 $theme-color: #a97642;

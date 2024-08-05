@@ -1,11 +1,12 @@
 <template>
-  <svg :style="iconStyle" aria-hidden="true">
+  <svg :style="iconStyle" aria-hidden="true" class="svg-icon">
     <use :xlink:href="symbolId" />
   </svg>
 </template>
 
 <script setup lang="ts" name="SvgIcon">
 import { computed, CSSProperties } from "vue";
+import "@/assets/iconfont/iconfont.js";
 
 interface SvgProps {
   name: string; // 图标的名称 ==> 必传
@@ -20,3 +21,13 @@ const props = withDefaults(defineProps<SvgProps>(), {
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`);
 </script>
+
+<style scoped>
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+</style>

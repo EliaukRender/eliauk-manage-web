@@ -22,7 +22,7 @@ const router = createRouter({
  * */
 router.beforeEach(async (to, from, next) => {
   NProgress.start();
-  console.log("beforeEach:", to, from);
+  // console.log("beforeEach:", to, from);
   const authStore = useAuthStore();
   const userStore = useUserStore();
 
