@@ -49,7 +49,7 @@ export const menuList: MenuItem[] = [
     name: "usePPT",
     componentName: "",
     meta: {
-      menuName: "研究PPT",
+      menuName: "研究PPT课件",
       menuIcon: "menu"
     },
     children: [

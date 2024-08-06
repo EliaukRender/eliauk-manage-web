@@ -16,7 +16,7 @@ const modules = import.meta.glob("@/views/**/*.vue");
  * 注意： 【"/src/views" + item.componentName + ".vue"】 要与该路由页面在项目中的路径保持一致
  */
 export const initDynamicRouter = async () => {
-  console.log("initDynamicRouter");
+  // console.log("initDynamicRouter");
   const authStore = useAuthStore();
   const userStore = useUserStore();
   try {
