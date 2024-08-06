@@ -16,7 +16,7 @@ interface SvgProps {
 
 const props = withDefaults(defineProps<SvgProps>(), {
   prefix: "icon",
-  iconStyle: () => ({ width: "32px", height: "32px" })
+  iconStyle: () => ({})
 });
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`);
@@ -24,9 +24,8 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`);
 
 <style scoped>
 .svg-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
+  width: 1.5em;
+  height: 1.5em;
   fill: currentColor;
   overflow: hidden;
 }

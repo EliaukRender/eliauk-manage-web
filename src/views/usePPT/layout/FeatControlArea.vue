@@ -1,12 +1,13 @@
 <template>
   <div class="feat-control-area">
     <div class="sava">
-      <SvgIcon name="baocun"></SvgIcon>
+      <SvgIcon name="baocun" :icon-style="{ width: '32px', height: '32px' }"></SvgIcon>
       <span>保存</span>
     </div>
     <div class="feat-list">
+      <ShapePopover></ShapePopover>
       <div v-for="item in featList" :key="item.id" class="feat">
-        <SvgIcon :name="item.icon"></SvgIcon>
+        <SvgIcon :name="item.icon" :icon-style="{ width: '32px', height: '32px' }"></SvgIcon>
         <span>{{ item.name }}</span>
       </div>
     </div>
@@ -14,9 +15,10 @@
 </template>
 
 <script setup lang="ts">
+import ShapePopover from "@/views/usePPT/components/operationFeatEntry/ShapePopover.vue";
+
 const featList = [
   { id: 1, name: "文本", icon: "wenben" },
-  { id: 2, name: "形状", icon: "xingzhuang" },
   { id: 3, name: "表格", icon: "biaoge" },
   { id: 4, name: "图片", icon: "tupian" },
   { id: 5, name: "音视频", icon: "yinshipin" },

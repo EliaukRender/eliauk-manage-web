@@ -16,5 +16,9 @@ export interface GlobalState {
   language: LanguageType;
 }
 
+export interface OperationFeatState {
+  shapeName: string;
+}
+
 // 语言种类
 export type LanguageType = "zh" | "en" | null;

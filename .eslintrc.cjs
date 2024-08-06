@@ -72,7 +72,9 @@ module.exports = {
     "max-lines": [2, 1500], // 限制一个文件最多的行数
     "max-lines-per-function": [2, 100], // 限制函数块中的代码行数
     "vue/component-definition-name-casing": [2, "PascalCase"], // 组件的 name 属性必须符合 PascalCase
-    "vue/component-name-in-template-casing": [2, "kebab-case"], // 限制组件名的风格
+    // "vue/component-name-in-template-casing": [2, "kebab-case"], // 限制组件名的风格
+    "vue/component-name-in-template-casing": "off", // 限制组件名的风格
+    "vue/html-self-closing": "off",
     "vue/match-component-file-name": 2, // 组件名称必须和文件名一致
     "vue/require-default-prop": "off", // vue的prop属性不需要必须指定默认值
     "no-dupe-class-members": 2, //禁止重复定义类的成员

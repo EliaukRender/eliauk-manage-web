@@ -33,7 +33,10 @@ export default defineConfig(({ mode }) => {
       }),
       // 使用 svg 图标
       createSvgIconsPlugin({
-        iconDirs: [resolve(process.cwd(), "src/assets/svg-icon")], // src/assets/svg-icons文件夹下统一存放svg图片
+        iconDirs: [
+          resolve(process.cwd(), "src/assets/svg-icon"),
+          resolve(process.cwd(), "src/views/usePPT/shape/rectangle")
+        ], // src/assets/svg-icons文件夹下统一存放svg图片
         symbolId: "icon-[dir]-[name]"
       })
     ],
