@@ -28,13 +28,13 @@ import { ref } from "vue";
 import { shapeList } from "@/views/usePPT/constant/shapeList.ts";
 import { useOperationFeatStore } from "@/views/usePPT/store/modules/operationFeatStore.ts";
 
-const shapePopoverRef = ref(null);
+const shapePopoverRef = ref<any>(null);
 const shapeNameList = Object.keys(shapeList);
 const operationFeat = useOperationFeatStore();
 
 // 选中元素
 const selectShape = (name: string) => {
-  shapePopoverRef.value?.hide();
+  shapePopoverRef.value!.hide();
   operationFeat.setShapeName(name);
 };
 </script>
