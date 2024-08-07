@@ -1,17 +1,15 @@
 <template>
-  <div ref="activeRef" v-click-outside="onClickOutside" class="shape">
-    <SvgIcon name="xingzhuang" :icon-style="{ width: '32px', height: '32px' }"></SvgIcon>
-    <span>形状</span>
-  </div>
-  <el-popover
-    ref="shapePopoverRef"
-    :virtual-ref="activeRef"
-    trigger="click"
-    virtual-triggering
-    popper-class="shape-popover"
-  >
-    <div class="tip-bar">预设</div>
+  <el-popover ref="shapePopoverRef" trigger="click" popper-class="shape-popover">
+    <!--  触发按钮  -->
+    <template #reference>
+      <div class="shape">
+        <SvgIcon name="xingzhuang" :icon-style="{ width: '32px', height: '32px' }"></SvgIcon>
+        <span>形状</span>
+      </div>
+    </template>
+
     <!--  形状选择  -->
+    <div class="tip-bar">预设</div>
     <div class="shape-list">
       <div v-for="item in shapeNameList" :key="item" class="shape-box">
         <div class="shape-title">{{ item }}</div>
@@ -26,20 +24,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, unref } from "vue";
-import { ClickOutside as vClickOutside } from "element-plus";
+import { ref } from "vue";
 import { shapeList } from "@/views/usePPT/constant/shapeList.ts";
 import { useOperationFeatStore } from "@/views/usePPT/store/modules/operationFeatStore.ts";
 
 const shapePopoverRef = ref(null);
-const activeRef = ref(null);
 const shapeNameList = Object.keys(shapeList);
 const operationFeat = useOperationFeatStore();
-
-// 点击外部，自动关闭
-const onClickOutside = () => {
-  unref(shapePopoverRef).popperRef?.delayHide?.();
-};
 
 // 选中元素
 const selectShape = (name: string) => {
