@@ -23,7 +23,7 @@
   padding: 0 40px;
   box-sizing: border-box;
   background-color: #fff;
-  @include boxShadow();
+  @include boxShadowTop();
 
   .left {
     display: flex;

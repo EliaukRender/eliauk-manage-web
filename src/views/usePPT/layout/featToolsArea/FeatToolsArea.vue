@@ -36,7 +36,7 @@ const featList = [
   padding: 0 40px;
   box-sizing: border-box;
   background-color: #fff;
-  @include boxShadow();
+  @include boxShadowBottom();
 
   .sava {
     display: flex;

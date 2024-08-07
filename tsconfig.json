@@ -42,11 +42,12 @@
     "src/**/*.d.ts",
     "auto-imports.d.ts",
     "components.d.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "node_modules/unplugin-auto-import/auto-imports.d.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
     "**/*.js"
-  ],
+  ]
 }
