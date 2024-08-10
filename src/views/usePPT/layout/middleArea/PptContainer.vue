@@ -3,25 +3,33 @@
     class="ppt-container"
     ref="pptContainerRef"
     tabindex="0"
-    @wheel="handleWheel"
-    @keydown.ctrl="handleCtrlUpDown(true)"
-    @keyup.ctrl="handleCtrlUpDown(false)"
+    @keydown="handleKeyDown($event)"
+    @keyup="handleKeyUp($event)"
+    @wheel="handleWheel($event)"
+    @contextmenu="handleContextMenu($event)"
   >
     <!--  PPT画布  -->
-    <PptContent :style="{ transform: `scale(${scale})` }" />
+    <PptContent
+      :style="{ transform: `scale(${pptStore.scaleGetter})` }"
+      @click="pptStore.setMenu(pptStore.menuGetter + 1)"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import PptContent from "@/views/usePPT/layout/middleArea/PptContent.vue";
-import { useScalePptByWheel } from "@/views/usePPT/hooks/mouseEvent/useScalePptByWheel.ts";
+import { useShortcutKeys } from "@/views/usePPT/hooks/shortcutKeys/useShortcutKeys.ts";
+import { useContextMenus } from "@/views/usePPT/hooks/contextMenus/useContextMenus.ts";
+import { usePptStore } from "@/store/modules/pptStore.ts";
 import { onMounted, ref } from "vue";
 
-const { scale, handleCtrlUpDown, handleWheel } = useScalePptByWheel(); // hooks
-const pptContainerRef = ref<HTMLDivElement>();
+const pptContainerRef = ref();
+const pptStore = usePptStore();
+const { handleKeyDown, handleKeyUp, handleWheel } = useShortcutKeys(); // 快捷键
+const { handleContextMenu } = useContextMenus(); // 鼠标右键
 
 onMounted(() => {
-  pptContainerRef.value?.focus(); // 自动聚焦在内容区
+  pptContainerRef?.value?.focus(); // 画布聚焦让键盘事件马上生效
 });
 </script>
 

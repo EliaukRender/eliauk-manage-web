@@ -9,6 +9,7 @@ export interface AuthState {
 export interface UserState {
   token: string;
   userInfo: Object;
+  count: number;
 }
 
 // globalStore

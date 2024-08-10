@@ -9,7 +9,8 @@ export const useUserStore = defineStore({
   id: "user-store",
   state: (): UserState => ({
     token: "",
-    userInfo: {}
+    userInfo: {},
+    count: 0
   }),
   getters: {},
   actions: {
@@ -21,6 +22,10 @@ export const useUserStore = defineStore({
     // 存储token
     setUserInfo(userInfo: any) {
       this.userInfo = userInfo;
+    },
+
+    setCount() {
+      this.count = this.count + 1;
     }
   },
   persist: piniaPersistConfig("user-store") // 持久化存储
