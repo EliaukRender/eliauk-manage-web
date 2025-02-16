@@ -1,8 +1,8 @@
-import {computed, h, watch, render, ref} from "vue";
-import {usePptStore} from "@/store/modules/pptStore.ts";
+// @ts-nocheck
+import { computed, h, watch, render, ref } from "vue";
+import { usePptStore } from "@/store/modules/pptStore.ts";
 import menuContext from "@/views/usePPT/components/menuContext/index.vue";
-import {ContextMenuItem, UseContextMenuTypes} from "@/views/usePPT/hooks/contextMenus/types";
-
+import { ContextMenuItem, UseContextMenuTypes } from "@/views/usePPT/hooks/contextMenus/types";
 
 /**
  * @description: 鼠标右键
@@ -50,16 +50,16 @@ export const useContextMenus = () => {
   const createContextMenu = (event: MouseEvent) => {
     // todo 基于激活的元素动态返回菜单列表
     const menuOptions: ContextMenuItem[] = [
-      {id: 1, label: "复制", subLabel: "CTRL+C", handler: "ctrl+c"},
-      {id: 1, label: "粘贴", subLabel: "CTRL+V", handler: "ctrl+v"},
-      {id: 1, label: "剪切", subLabel: "CTRL+X", handler: "ctrl+x"}
+      { id: 1, label: "复制", subLabel: "CTRL+C", handler: "ctrl+c" },
+      { id: 1, label: "粘贴", subLabel: "CTRL+V", handler: "ctrl+v" },
+      { id: 1, label: "剪切", subLabel: "CTRL+X", handler: "ctrl+x" }
     ];
     const vnode = h(menuContext, {
-      position: {x: event.clientX, y: event.clientY},
+      position: { x: event.clientX, y: event.clientY },
       menuOptions: menuOptions,
       onContextMenuHandler: contextMenuHandler
     });
-    state.value.container = document.createElement('div');
+    state.value.container = document.createElement("div");
     render(vnode, state.value.container);
     document.body.appendChild(state.value.container);
 

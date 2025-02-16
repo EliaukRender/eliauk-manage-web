@@ -1,7 +1,8 @@
 <template>
   <div class="menu" :style="{ top: `${position.y}px`, left: `${position.x}px` }">
-    <div v-for="menuItem in menuOptions"
-         :key="menuItem.id" class="menu-item" @click.prevent.stop="clickMenuItem(menuItem)"
+    <div
+      v-for="menuItem in menuOptions"
+      :key="menuItem.id" class="menu-item" @click.prevent.stop="clickMenuItem(menuItem)"
     >
       <div class="label">{{ menuItem.label }}</div>
       <div class="sub-label">{{ menuItem?.subLabel }}</div>

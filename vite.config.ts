@@ -9,8 +9,9 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import vueSetupExtend from "unplugin-vue-setup-extend-plus/vite";
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), ""); // 根据mode值加载对应的.env.**文件，来加载所有环境变量
+  const env = loadEnv(mode, process.cwd(), ""); // 根据mode值加载对应的.env.**文件，来加载所有环境变量cls
   return {
+    base: './',
     // define: 定义全局变量
     define: {
       APP_ENV: JSON.stringify(env.APP_ENV)
@@ -74,6 +75,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         // 导入scss预编译程序
         scss: {
+          pi: 'modern-compiler', // or "modern", "legacy"
           additionalData: '@use "@/assets/styles/mixin.scss" as *;'
         }
       }
