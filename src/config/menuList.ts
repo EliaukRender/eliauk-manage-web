@@ -9,7 +9,7 @@ export const menuList: MenuItem[] = [
     name: "useDialog",
     componentName: "",
     meta: {
-      menuName: "弹窗组件",
+      menuName: "弹窗",
       menuIcon: "menu"
     },
     children: [
@@ -18,7 +18,7 @@ export const menuList: MenuItem[] = [
         name: "useDialog-index",
         componentName: "/useDialog/index",
         meta: {
-          menuName: "效果展示",
+          menuName: "组件展示",
           menuIcon: "ElementPlus"
         }
       }
@@ -29,7 +29,7 @@ export const menuList: MenuItem[] = [
     name: "useTable",
     componentName: "",
     meta: {
-      menuName: "表格组件",
+      menuName: "表格",
       menuIcon: "menu"
     },
     children: [
@@ -38,7 +38,7 @@ export const menuList: MenuItem[] = [
         name: "useTable-index",
         componentName: "/useTable/index",
         meta: {
-          menuName: "效果展示",
+          menuName: "组件展示",
           menuIcon: "ElementPlus"
         }
       }
@@ -49,7 +49,7 @@ export const menuList: MenuItem[] = [
     name: "usePPT",
     componentName: "",
     meta: {
-      menuName: "研究PPT课件",
+      menuName: "PPT课件",
       menuIcon: "menu"
     },
     children: [
@@ -58,7 +58,27 @@ export const menuList: MenuItem[] = [
         name: "usePPT-index",
         componentName: "/usePPT/index",
         meta: {
-          menuName: "效果展示",
+          menuName: "组件展示",
+          menuIcon: "ElementPlus"
+        }
+      }
+    ]
+  },
+  {
+    path: "/useTree",
+    name: "useTree",
+    componentName: "",
+    meta: {
+      menuName: "树组件",
+      menuIcon: "menu"
+    },
+    children: [
+      {
+        path: "/useTree/index",
+        name: "useTree-index",
+        componentName: "/useTree/index",
+        meta: {
+          menuName: "组件展示",
           menuIcon: "ElementPlus"
         }
       }
