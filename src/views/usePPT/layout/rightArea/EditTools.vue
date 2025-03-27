@@ -5,11 +5,13 @@
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
+@use "@/assets/styles/mixin";
+
 .edit-tools {
   width: 300px;
   min-width: 300px;
   height: 100%;
   background-color: #f7f8fa;
-  @include boxShadowLeft();
+  @include mixin.boxShadowLeft();
 }
 </style>

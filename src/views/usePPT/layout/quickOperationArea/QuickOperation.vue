@@ -13,12 +13,14 @@
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
+@use "@/assets/styles/mixin";
+
 .quick-area {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 50px;
-  border-bottom: 1px solid $french_Cool_light_gray;
+  border-bottom: 1px solid mixin.$french_Cool_light_gray;
   box-sizing: border-box;
   padding: 0 40px;
   background-color: #fff;

@@ -61,19 +61,19 @@ const defaultOpends = computed(() => {
 //   isCollapse.value = !isCollapse.value;
 // };
 
-const handleOpen = () => {
-};
+const handleOpen = () => {};
 
-const handleClose = () => {
-};
+const handleClose = () => {};
 </script>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/mixin";
+
 .aside {
   height: 100%;
 
   .menu {
-    width: $aside-menu-width;
+    width: mixin.$aside-menu-width;
     height: 100%;
     position: relative;
 
@@ -81,7 +81,7 @@ const handleClose = () => {
       width: 100%;
       height: 100%;
       background-color: #fff;
-      border-radius: $border-radius;
+      border-radius: mixin.$border-radius;
       border: none;
 
       .el-menu-item-group__title {
@@ -94,7 +94,7 @@ const handleClose = () => {
         padding-bottom: 0;
 
         &:hover {
-          background-color: $mld_blue_five !important;
+          background-color: mixin.$mld_blue_five !important;
         }
       }
 
@@ -103,14 +103,14 @@ const handleClose = () => {
 
         &:hover {
           margin: 5px;
-          background-color: $mld_blue_five;
+          background-color: mixin.$mld_blue_five;
         }
 
         &.is-active {
           font-size: 14px;
           font-weight: 600;
           color: #ffffff;
-          background-color: $mld_blue_one;
+          background-color: mixin.$mld_blue_one;
         }
       }
     }

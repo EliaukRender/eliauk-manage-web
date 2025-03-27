@@ -1,3 +1,5 @@
+@use "mixin";
+
 /**
  * @Description: 项目中基础的重置样式
 */
@@ -46,7 +48,7 @@ img {
 
 ::-webkit-scrollbar-thumb {
   background-color: #c3c3c3; /* 滑块背景颜色 */
-  border-radius: $border-radius; /* 滑块圆角 */
+  border-radius: mixin.$border-radius; /* 滑块圆角 */
 }
 
 ::-webkit-scrollbar-thumb:hover {

@@ -4,41 +4,22 @@ import { MenuItem } from "@/types/menuType.ts";
  *  note: 菜单列表;  目前是前端自己写死
  * */
 export const menuList: MenuItem[] = [
+  // 组件使用
   {
-    path: "/useDialog",
-    name: "useDialog",
+    path: "/useComps",
+    name: "useComps",
     componentName: "",
     meta: {
-      menuName: "弹窗",
+      menuName: "组件使用",
       menuIcon: "menu"
     },
     children: [
       {
-        path: "/useDialog/index",
-        name: "useDialog-index",
-        componentName: "/useDialog/index",
+        path: "/useComps/index",
+        name: "useComps-index",
+        componentName: "/useComps/index",
         meta: {
-          menuName: "组件展示",
-          menuIcon: "ElementPlus"
-        }
-      }
-    ]
-  },
-  {
-    path: "/useTable",
-    name: "useTable",
-    componentName: "",
-    meta: {
-      menuName: "表格",
-      menuIcon: "menu"
-    },
-    children: [
-      {
-        path: "/useTable/index",
-        name: "useTable-index",
-        componentName: "/useTable/index",
-        meta: {
-          menuName: "组件展示",
+          menuName: "组件集合",
           menuIcon: "ElementPlus"
         }
       }
@@ -49,7 +30,7 @@ export const menuList: MenuItem[] = [
     name: "usePPT",
     componentName: "",
     meta: {
-      menuName: "PPT课件",
+      menuName: "PPT",
       menuIcon: "menu"
     },
     children: [
@@ -58,27 +39,27 @@ export const menuList: MenuItem[] = [
         name: "usePPT-index",
         componentName: "/usePPT/index",
         meta: {
-          menuName: "组件展示",
+          menuName: "PPT",
           menuIcon: "ElementPlus"
         }
       }
     ]
   },
   {
-    path: "/useTree",
-    name: "useTree",
+    path: "/useDemo",
+    name: "useDemo",
     componentName: "",
     meta: {
-      menuName: "树组件",
+      menuName: "Demo",
       menuIcon: "menu"
     },
     children: [
       {
-        path: "/useTree/index",
-        name: "useTree-index",
-        componentName: "/useTree/index",
+        path: "/useDemo/index",
+        name: "useDemo-index",
+        componentName: "/useDemo/index",
         meta: {
-          menuName: "组件展示",
+          menuName: "Demo",
           menuIcon: "ElementPlus"
         }
       }

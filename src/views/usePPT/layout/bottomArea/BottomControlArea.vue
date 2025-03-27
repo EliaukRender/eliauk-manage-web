@@ -15,6 +15,8 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/mixin";
+
 .bottom-control-area {
   height: 45px;
   display: flex;
@@ -23,7 +25,7 @@
   padding: 0 40px;
   box-sizing: border-box;
   background-color: #fff;
-  @include boxShadowTop();
+  @include mixin.boxShadowTop();
 
   .left {
     display: flex;

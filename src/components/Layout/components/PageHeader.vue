@@ -1,21 +1,17 @@
 <template>
   <div class="header">
     <div class="left" @click="goToHome">
-      <img src="@/assets/images/common/logo.jpg" alt="">
+      <img src="@/assets/images/common/logo.jpg" alt="" />
       <span class="title">EliaukManage</span>
     </div>
     <div class="right">
       <svg-icon class="svg-user" name="expression-4" />
       <el-popover placement="bottom" :width="80" trigger="hover" popper-class="username-popover">
         <div class="operation">
-          <div class="login-out" @click="loginOut">
-            退出登录
-          </div>
+          <div class="login-out" @click="loginOut">退出登录</div>
         </div>
         <template #reference>
-          <div class="user-name">
-            Eliauk
-          </div>
+          <div class="user-name">Eliauk</div>
         </template>
       </el-popover>
     </div>
@@ -52,16 +48,18 @@ const loginOut = () => {
 </script>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/mixin";
+
 .header {
-  @include flexRow();
-  height: $page-header-height;
+  @include mixin.flexRow();
+  height: mixin.$page-header-height;
   padding: 0 24px;
-  background: linear-gradient(45deg, $mld_blue_one, $french_Cool_blue);
-  color: $french_Cool_light_gray;
+  background: linear-gradient(45deg, mixin.$mld_blue_one, mixin.$french_Cool_blue);
+  color: mixin.$french_Cool_light_gray;
   font-family: Alimama;
 
   .left {
-    @include flexRow();
+    @include mixin.flexRow();
     cursor: pointer;
 
     > img {
@@ -72,14 +70,14 @@ const loginOut = () => {
       padding: 0 10px;
       font-size: 24px;
       font-weight: 600;
-      background: linear-gradient(90deg, #ffffff, $french_Cool_light_gray);
+      background: linear-gradient(90deg, #ffffff, mixin.$french_Cool_light_gray);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
 
   .right {
-    @include flexRow();
+    @include mixin.flexRow();
     font-size: 16px;
 
     .svg-user {
@@ -95,13 +93,15 @@ const loginOut = () => {
 </style>
 
 <style lang="scss">
+@use "@/assets/styles/mixin";
+
 .username-popover {
   width: 120px !important;
   min-width: 120px !important;
   cursor: pointer;
 
   .operation {
-    @include flexCol();
+    @include mixin.flexCol();
   }
 }
 </style>

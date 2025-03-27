@@ -28,6 +28,8 @@ const featList = [
 </script>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/mixin";
+
 .feat-control-area {
   height: 90px;
   display: flex;
@@ -36,7 +38,7 @@ const featList = [
   padding: 0 40px;
   box-sizing: border-box;
   background-color: #fff;
-  @include boxShadowBottom();
+  @include mixin.boxShadowBottom();
 
   .sava {
     display: flex;

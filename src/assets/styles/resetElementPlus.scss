@@ -1,3 +1,5 @@
+@use "mixin";
+
 /**
  * @Description: 重置element-plus组件的样式
 */
@@ -9,7 +11,7 @@
   padding: 0 !important;
 
   .el-dialog__header {
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid mixin.$border;
     margin: 0;
     padding: 15px;
 
@@ -42,7 +44,7 @@
  *  note: el-drawer
  * */
 .el-drawer__header {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid mixin.$border;
   margin: 0 !important;
   padding: 15px !important;
 }

@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <img class="home-bg" src="@/assets/images/common/welcome.png" alt="welcome">
+    <img class="home-bg" src="@/assets/images/common/welcome.png" alt="welcome" />
   </div>
 </template>
 
 <script setup lang="ts" name="home"></script>
 
 <style scoped lang="scss">
+@use "@/assets/styles/mixin";
+
 .home {
   display: flex;
   align-items: center;
@@ -14,7 +16,7 @@
   width: 100%;
   height: 100%;
   background-color: #fff;
-  border-radius: $border-radius;
+  border-radius: mixin.$border-radius;
 
   .home-bg {
     width: 70%;
