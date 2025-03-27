@@ -40,7 +40,7 @@
 </template>
 
 /** * 注释：封装的抽屉Drawer组件 * */
-<script setup lang="ts" name="Drawer">
+<script setup lang="ts" name="CustomDrawer">
 interface PropsType {
   visible: boolean;
   title?: string;

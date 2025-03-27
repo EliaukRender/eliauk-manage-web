@@ -36,7 +36,7 @@
 </template>
 
 <!-- 注释：封装的对话框Dialog组件 -->
-<script lang="ts" setup name="Dialog">
+<script lang="ts" setup name="CustomDialog">
 import { computed } from "vue";
 
 interface PropsType {
@@ -96,6 +96,12 @@ const cancel = () => {
 // 点击确定
 const confirm = () => {
   emits("confirm");
+};
+</script>
+
+<script lang="ts">
+export default {
+  name: 'CustomDialog'
 };
 </script>
 
