@@ -1,7 +1,20 @@
 /**
- *  note: 全局公共样式
- * */
+ * @description: 全局公共样式
+*/
+
 @use "./mixin.scss";
+
+/* 自定义字体 */
+@font-face {
+  font-family: "Alimama";
+  src: local("Alimama"),
+  url(../font/AlimamaFangYuanTiVF-Thin.ttf) format("truetype"); /* 可以根据需要添加更多的字体格式，如 woff、woff2 */
+}
+
+/* iconfont字体大小 */
+.iconfont {
+  font-size: 22px !important;
+}
 
 .page-main {
   /* 减去自身的padding-top与padding-bottom */

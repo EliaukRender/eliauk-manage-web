@@ -1,4 +1,4 @@
-// 要以 .cjs 结尾，告知此文件遵循commonJs模块规范
+// 要以.cjs 结尾，告知此文件遵循commonJs模块规范
 module.exports = {
   env: {
     browser: true,
@@ -48,7 +48,7 @@ module.exports = {
     "brace-style": [2, "1tbs", { allowSingleLine: true }], // if while function 后面的{必须与if在同一行。
     "space-before-function-paren": [0, "always"], // 函数定义时括号前面要不要有空格
     "semi-spacing": [0, { before: false, after: true }], //分号前后空格
-    "prefer-const": 2, //首选const
+    "prefer-const": 2, // 首选const
     "padded-blocks": 0, //块语句内行首行尾是否要空行
     "max-params": [2, 5], //函数最多只能有5个参数
     "key-spacing": [0, { beforeColon: false, afterColon: true }], // 对象字面量中冒号的前后空格

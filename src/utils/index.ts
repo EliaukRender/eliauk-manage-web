@@ -20,9 +20,13 @@ export function setupRem(): void {
   const setRem = () => {
     const htmlDom = document.documentElement;
     const width = htmlDom.clientWidth;
-    // 这里假设设计稿是1920px，划分为120份，即1rem = 16px
-    const fontSize = width / 120;
-    htmlDom.style.fontSize = fontSize + "px";
+    if (width <= 1920) {
+      htmlDom.style.fontSize = 16 + "px";
+    } else {
+      // 这里假设设计稿宽度大于1920px，划分为120份，即1rem = 16px
+      const fontSize = width / 120;
+      htmlDom.style.fontSize = fontSize + "px";
+    }
   };
 
   // 初始化

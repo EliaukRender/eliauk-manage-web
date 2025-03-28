@@ -4,7 +4,7 @@
   </el-config-provider>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="App">
 import { useGlobalStore } from "@/store/modules/globalStore.ts";
 import { getBrowserLang } from "@/utils";
 import en from "element-plus/es/locale/lang/en";
