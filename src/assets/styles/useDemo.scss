@@ -1,0 +1,259 @@
+/**
+ * @Description: scss使用的demo示例
+   1、变量使用
+   2、嵌套规则
+   3、mixin混合
+      普通混合
+      带参数的 Mixin
+      带条件、带参数的混合
+   4、函数
+      颜色函数
+      数学函数
+   5、@if条件语句
+   6、循环
+      for村官、each循环、while循环
+   7、插值语法
+   8、列表与映射
+   9、自定义函数
+   10、媒体查询混合
+   11、继承
+
+   继承（@extend）：
+      合并选择器，生成共享的 CSS 规则
+      减少 CSS 文件大小
+      不能传递参数
+      适合完全相同的样式复用
+    扩展（mixins）：
+      复制代码到每个使用处
+      可以传递参数
+      更灵活，可以根据参数生成不同样式
+      生成的 CSS 文件较大
+*/
+
+/**
+ *    1、变量使用
+ */
+$primary-color: #1a73e8;
+$spacing-unit: 8px;
+$font-family: "Arial", sans-serif;
+
+/**
+ *    2、嵌套规则
+ */
+.nav {
+  background: #fff;
+
+  &__item {
+    // 生成 .nav__item
+    padding: 10px;
+
+    &:hover {
+      // 生成 .nav__item:hover
+      background: #f5f5f5;
+    }
+  }
+}
+
+/**
+ *    3、mixin混合---普通混合
+ */
+@mixin button-base {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primary-button {
+  @include button-base;
+  background-color: #1a73e8;
+  color: white;
+}
+
+/**
+ *   3、mixin混合---带参数的 Mixin
+ */
+@mixin button($bg-color, $text-color) {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+.primary-button {
+  @include button(#1a73e8, white);
+}
+
+.secondary-button {
+  @include button(#f5f5f5, #333);
+}
+
+/**
+ *   3、mixin混合---带条件、带参数的混合
+ */
+@mixin button($size) {
+  @if $size == "large" {
+    padding: 15px 30px;
+    font-size: 18px;
+  } @else if $size == "small" {
+    padding: 5px 10px;
+    font-size: 14px;
+  } @else {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+.large-button {
+  @include button("large");
+}
+
+.small-button {
+  @include button("small");
+}
+
+/**
+ *  4、函数
+ */
+// 颜色函数
+.button {
+  background: lighten($primary-color, 10%); // 变亮
+  border-color: darken($primary-color, 10%); // 变暗
+  &:hover {
+    background: rgba($primary-color, 0.8); // 透明度
+  }
+}
+
+// 数学函数
+.container {
+  width: percentage(0.8); // 转换为百分比
+  height: round(3.7px); // 四舍五入
+  margin: ceil(3.2px); // 向上取整
+  padding: floor(3.8px); // 向下取整
+}
+
+/**
+ *  5、条件语句
+ */
+$theme: 'dark';
+
+.button {
+  @if $theme == 'dark' {
+    background: #333;
+    color: white;
+  } @else {
+    background: #fff;
+    color: #333;
+  }
+}
+
+/**
+ *   6、循环
+ */
+// for 循环
+@for $i from 1 through 3 {
+  .col-#{$i} {
+    width: $i * 25%;
+  }
+}
+
+// each 循环
+$sizes: (small: 12px, medium: 16px, large: 20px);
+@each $name, $size in $sizes {
+  .text-#{$name} {
+    font-size: $size;
+  }
+}
+
+// while 循环
+$i: 1;
+@while $i <= 3 {
+  .item-#{$i} {
+    width: $i * 2em;
+  }
+  $i: $i + 1;
+}
+
+/**
+ *   7、插值语法
+ */
+$property: margin;
+$direction: top;
+$color: blue;
+
+.element {
+  #{$property}-#{$direction}: 20px;
+  border-color: #{$color};
+}
+
+/**
+ *   8、列表和映射
+ */
+// 列表
+$padding-list: 10px 15px 20px 25px;
+.box {
+  padding: nth($padding-list, 2); // 获取第2个值
+}
+
+// 映射
+$theme-colors: (
+  'primary': blue,
+  'secondary': gray,
+  'success': green
+);
+.button {
+  color: map-get($theme-colors, 'primary');
+}
+
+/**
+ *  9、自定义函数
+ */
+@function calculate-width($n) {
+  @return $n * 100px;
+}
+
+.container {
+  width: calculate-width(3); // 300px
+}
+
+/**
+ * 10、媒体查询混合
+ */
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'small' {
+    @media (max-width: 576px) {
+      @content;
+    }
+  } @else if $breakpoint == 'medium' {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == 'large' {
+    @media (max-width: 992px) {
+      @content;
+    }
+  }
+}
+
+.container {
+  width: 1200px;
+
+  @include respond-to('medium') {
+    width: 100%;
+  }
+}
+
+/**
+ * 11、继承
+ */
+%base-button {
+  min-width: 120px;
+  height: 48px;
+  background-color: $french_Cool_blue;
+}
+
+.primary-button {
+  @extend %base-button; // @extend 继承选择器
+}
